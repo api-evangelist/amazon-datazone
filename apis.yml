@@ -9,11 +9,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Data Management
+  - AWS
   - Data Catalog
   - Data Governance
+  - Data Management
   - Data Sharing
-  - AWS
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-datazone/refs/heads/main/apis.yml
 created: '2026-03-16'
