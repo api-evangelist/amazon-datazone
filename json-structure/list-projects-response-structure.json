@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-structure/list-projects-response-structure.json",
+  "title": "List Projects Response",
+  "description": "Response containing a list of projects.",
+  "type": "typedMap",
+  "fields": {
+    "items": {
+      "type": "list",
+      "description": "items"
+    },
+    "nextToken": {
+      "type": "str",
+      "description": "nextToken"
+    }
+  }
+}

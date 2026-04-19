@@ -1,0 +1,127 @@
+id: https://api-evangelist.github.io/amazon-datazone/capabilities/shared/datazone.yaml
+name: Amazon DataZone API
+description: Naftiko shared capability definition for Amazon DataZone API, providing programmatic access to manage data domains, projects, assets, subscriptions, and environments for enterprise data catalog and governance.
+version: 1.0.0-alpha1
+specificationVersion: 1.0.0-alpha1
+
+provider:
+  name: Amazon Web Services
+  url: https://aws.amazon.com
+
+tags:
+  - AWS
+  - Data Catalog
+  - Data Governance
+  - Data Management
+
+rest:
+  port: 8100
+  baseURL: https://datazone.amazonaws.com
+  auth:
+    type: aws-signature-v4
+    service: datazone
+  resources:
+    - name: Domains
+      description: Manage DataZone domains
+      operations:
+        - operationId: listDomains
+          summary: List Domains
+          method: GET
+          path: /v2/domains
+        - operationId: createDomain
+          summary: Create Domain
+          method: POST
+          path: /v2/domains
+        - operationId: getDomain
+          summary: Get Domain
+          method: GET
+          path: /v2/domains/{domainIdentifier}
+        - operationId: updateDomain
+          summary: Update Domain
+          method: PUT
+          path: /v2/domains/{domainIdentifier}
+        - operationId: deleteDomain
+          summary: Delete Domain
+          method: DELETE
+          path: /v2/domains/{domainIdentifier}
+    - name: Projects
+      description: Manage projects within domains
+      operations:
+        - operationId: listProjects
+          summary: List Projects
+          method: GET
+          path: /v2/domains/{domainIdentifier}/projects
+        - operationId: createProject
+          summary: Create Project
+          method: POST
+          path: /v2/domains/{domainIdentifier}/projects
+        - operationId: getProject
+          summary: Get Project
+          method: GET
+          path: /v2/domains/{domainIdentifier}/projects/{identifier}
+        - operationId: updateProject
+          summary: Update Project
+          method: PATCH
+          path: /v2/domains/{domainIdentifier}/projects/{identifier}
+        - operationId: deleteProject
+          summary: Delete Project
+          method: DELETE
+          path: /v2/domains/{domainIdentifier}/projects/{identifier}
+    - name: Assets
+      description: Manage data assets in the catalog
+      operations:
+        - operationId: createAsset
+          summary: Create Asset
+          method: POST
+          path: /v2/domains/{domainIdentifier}/assets
+        - operationId: getAsset
+          summary: Get Asset
+          method: GET
+          path: /v2/domains/{domainIdentifier}/assets/{identifier}
+        - operationId: deleteAsset
+          summary: Delete Asset
+          method: DELETE
+          path: /v2/domains/{domainIdentifier}/assets/{identifier}
+    - name: Subscriptions
+      description: Manage data subscriptions and requests
+      operations:
+        - operationId: listSubscriptions
+          summary: List Subscriptions
+          method: GET
+          path: /v2/domains/{domainIdentifier}/subscriptions
+        - operationId: listSubscriptionRequests
+          summary: List Subscription Requests
+          method: GET
+          path: /v2/domains/{domainIdentifier}/subscription-requests
+        - operationId: createSubscriptionRequest
+          summary: Create Subscription Request
+          method: POST
+          path: /v2/domains/{domainIdentifier}/subscription-requests
+
+mcp:
+  port: 9100
+  tools:
+    - name: list_domains
+      description: List all DataZone domains
+      operationId: listDomains
+    - name: create_domain
+      description: Create a new DataZone domain
+      operationId: createDomain
+    - name: create_project
+      description: Create a project within a domain
+      operationId: createProject
+    - name: list_projects
+      description: List projects in a domain
+      operationId: listProjects
+    - name: create_asset
+      description: Create a data asset in the catalog
+      operationId: createAsset
+    - name: search_listings
+      description: Search for data asset listings in the catalog
+      operationId: searchListings
+    - name: request_subscription
+      description: Request access to a data asset listing
+      operationId: createSubscriptionRequest
+    - name: list_subscriptions
+      description: List active subscriptions in a domain
+      operationId: listSubscriptions

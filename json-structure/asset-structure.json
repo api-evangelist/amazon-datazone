@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-structure/asset-structure.json",
+  "title": "Asset",
+  "description": "A data asset cataloged in the DataZone data catalog.",
+  "type": "typedMap",
+  "fields": {
+    "id": {
+      "type": "str",
+      "description": "The unique identifier of the asset"
+    },
+    "name": {
+      "type": "str",
+      "description": "name"
+    },
+    "description": {
+      "type": "str",
+      "description": "description"
+    },
+    "domainId": {
+      "type": "str",
+      "description": "domainId"
+    },
+    "owningProjectId": {
+      "type": "str",
+      "description": "owningProjectId"
+    },
+    "typeIdentifier": {
+      "type": "str",
+      "description": "typeIdentifier"
+    },
+    "createdAt": {
+      "type": "str",
+      "description": "createdAt"
+    }
+  }
+}

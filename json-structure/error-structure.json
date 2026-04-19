@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-structure/error-structure.json",
+  "title": "Error",
+  "description": "Standard error response from the DataZone API.",
+  "type": "typedMap",
+  "fields": {
+    "message": {
+      "type": "str",
+      "description": "message"
+    },
+    "code": {
+      "type": "str",
+      "description": "code"
+    }
+  }
+}

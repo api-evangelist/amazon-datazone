@@ -1,0 +1,83 @@
+id: https://api-evangelist.github.io/amazon-datazone/capabilities/data-catalog-operations.yaml
+name: Data Catalog Operations
+description: Workflow-oriented Naftiko capability for data catalog and governance operations using Amazon DataZone, covering domain setup, data asset publishing, access request management, and environment provisioning.
+version: 1.0.0-alpha1
+specificationVersion: 1.0.0-alpha1
+
+tags:
+  - Data Catalog
+  - Data Governance
+  - Data Sharing
+  - Data Management
+
+imports:
+  - url: capabilities/shared/datazone.yaml
+    as: datazone
+
+personas:
+  - name: Data Domain Owner
+    description: Owner of a DataZone domain responsible for governance policies and domain configuration
+  - name: Data Producer
+    description: Data owner who publishes data assets to the DataZone catalog for discovery and sharing
+  - name: Data Consumer
+    description: Analyst or engineer who discovers and requests access to data assets in the catalog
+
+workflows:
+  - name: Set Up Data Domain
+    description: Initialize a DataZone domain with projects and environments for data sharing
+    steps:
+      - step: createDomain
+        capability: datazone
+        description: Create a DataZone domain as the governance boundary
+      - step: createProject
+        capability: datazone
+        description: Create an initial project for the data team
+      - step: createEnvironment
+        capability: datazone
+        description: Provision an environment with data access tools
+    persona: Data Domain Owner
+
+  - name: Publish Data Asset
+    description: Catalog a data asset and make it discoverable in the DataZone portal
+    steps:
+      - step: createAsset
+        capability: datazone
+        description: Create a data asset entry in the catalog
+    persona: Data Producer
+
+  - name: Request Data Access
+    description: Discover and request access to a data asset in the catalog
+    steps:
+      - step: searchListings
+        capability: datazone
+        description: Browse the catalog to find needed data assets
+      - step: createSubscriptionRequest
+        capability: datazone
+        description: Submit a subscription request with business justification
+      - step: listSubscriptions
+        capability: datazone
+        description: Confirm subscription approval and access
+    persona: Data Consumer
+
+rest:
+  port: 8080
+  baseURL: https://datazone.amazonaws.com
+  auth:
+    type: aws-signature-v4
+    service: datazone
+
+mcp:
+  port: 9090
+  tools:
+    - name: setup_data_domain
+      description: Create a DataZone domain with initial project and environment
+      workflow: Set Up Data Domain
+    - name: publish_data_asset
+      description: Catalog a data asset for discovery in the DataZone portal
+      workflow: Publish Data Asset
+    - name: request_data_access
+      description: Search for and request access to a data asset
+      workflow: Request Data Access
+    - name: list_domains
+      description: List all DataZone domains
+      operationId: listDomains

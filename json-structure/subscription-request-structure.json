@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-structure/subscription-request-structure.json",
+  "title": "Subscription Request",
+  "description": "A request to subscribe to a data asset listing in DataZone.",
+  "type": "typedMap",
+  "fields": {
+    "id": {
+      "type": "str",
+      "description": "The unique identifier of the subscription request"
+    },
+    "domainId": {
+      "type": "str",
+      "description": "domainId"
+    },
+    "status": {
+      "type": "str",
+      "description": "status"
+    },
+    "requestReason": {
+      "type": "str",
+      "description": "requestReason"
+    },
+    "createdAt": {
+      "type": "str",
+      "description": "createdAt"
+    }
+  }
+}

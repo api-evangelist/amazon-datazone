@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-schema/list-projects-response-schema.json",
+  "title": "List Projects Response",
+  "description": "Response containing a list of projects.",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array"
+    },
+    "nextToken": {
+      "type": "string"
+    }
+  }
+}

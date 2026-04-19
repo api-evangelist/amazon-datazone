@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-schema/list-domains-response-schema.json",
+  "title": "List Domains Response",
+  "description": "Response containing a list of DataZone domains.",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array"
+    },
+    "nextToken": {
+      "type": "string"
+    }
+  }
+}

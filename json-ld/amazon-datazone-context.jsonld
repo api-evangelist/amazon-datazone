@@ -1,0 +1,39 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "aws": "https://aws.amazon.com/datazone/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Domain": {"@id": "aws:Domain"},
+    "Project": {"@id": "aws:Project"},
+    "Asset": {"@id": "aws:DataAsset"},
+    "Environment": {"@id": "aws:Environment"},
+    "SubscriptionRequest": {"@id": "aws:SubscriptionRequest"},
+
+    "id": {"@id": "aws:resourceId", "@type": "xsd:string"},
+    "arn": {"@id": "aws:arn", "@type": "xsd:string"},
+    "name": {"@id": "schema:name", "@type": "xsd:string"},
+    "description": {"@id": "schema:description", "@type": "xsd:string"},
+    "status": {"@id": "aws:status", "@type": "xsd:string"},
+    "portalUrl": {"@id": "schema:url", "@type": "xsd:string"},
+    "domainId": {"@id": "aws:domainId", "@type": "xsd:string"},
+    "domainExecutionRole": {"@id": "aws:domainExecutionRole", "@type": "xsd:string"},
+    "projectId": {"@id": "aws:projectId", "@type": "xsd:string"},
+    "owningProjectId": {"@id": "aws:owningProjectId", "@type": "xsd:string"},
+    "typeIdentifier": {"@id": "aws:assetType", "@type": "xsd:string"},
+    "requestReason": {"@id": "schema:description", "@type": "xsd:string"},
+    "nextToken": {"@id": "aws:nextToken", "@type": "xsd:string"},
+
+    "items": {"@id": "aws:items", "@container": "@set"},
+    "subscribedListings": {"@id": "aws:subscribedListings", "@container": "@set"},
+    "subscribedPrincipals": {"@id": "aws:subscribedPrincipals", "@container": "@set"},
+    "tags": {"@id": "aws:tags"},
+
+    "createdAt": {"@id": "schema:dateCreated", "@type": "xsd:dateTime"},
+    "updatedAt": {"@id": "schema:dateModified", "@type": "xsd:dateTime"},
+
+    "message": {"@id": "schema:description", "@type": "xsd:string"},
+    "code": {"@id": "aws:errorCode", "@type": "xsd:string"}
+  }
+}

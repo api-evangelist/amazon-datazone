@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-schema/asset-schema.json",
+  "title": "Asset",
+  "description": "A data asset cataloged in the DataZone data catalog.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the asset"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "domainId": {
+      "type": "string"
+    },
+    "owningProjectId": {
+      "type": "string"
+    },
+    "typeIdentifier": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

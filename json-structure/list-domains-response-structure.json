@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-structure/list-domains-response-structure.json",
+  "title": "List Domains Response",
+  "description": "Response containing a list of DataZone domains.",
+  "type": "typedMap",
+  "fields": {
+    "items": {
+      "type": "list",
+      "description": "items"
+    },
+    "nextToken": {
+      "type": "str",
+      "description": "nextToken"
+    }
+  }
+}

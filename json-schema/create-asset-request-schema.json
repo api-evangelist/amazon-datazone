@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-schema/create-asset-request-schema.json",
+  "title": "Create Asset Request",
+  "description": "Request body for creating a data asset.",
+  "type": "object",
+  "required": [
+    "name",
+    "domainIdentifier",
+    "owningProjectIdentifier",
+    "typeIdentifier"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "domainIdentifier": {
+      "type": "string"
+    },
+    "owningProjectIdentifier": {
+      "type": "string"
+    },
+    "typeIdentifier": {
+      "type": "string"
+    }
+  }
+}

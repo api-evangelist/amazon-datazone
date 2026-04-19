@@ -1,0 +1,8 @@
+{
+  "id": "dzd_1234567890abcde",
+  "arn": "arn:aws:datazone:us-east-1:123456789012:domain/dzd_1234567890abcde",
+  "name": "EnterpriseDataDomain",
+  "description": "Enterprise data catalog domain",
+  "status": "AVAILABLE",
+  "createdAt": "2024-01-15T10:00:00Z"
+}

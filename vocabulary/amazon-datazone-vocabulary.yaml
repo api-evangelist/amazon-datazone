@@ -1,0 +1,104 @@
+id: https://api-evangelist.github.io/amazon-datazone/vocabulary/amazon-datazone-vocabulary.yaml
+name: Amazon DataZone Vocabulary
+description: Controlled vocabulary for Amazon DataZone covering domains, projects, assets, subscriptions, and data governance concepts.
+version: 1.0.0
+specificationVersion: 1.0.0
+
+tags:
+  - AWS
+  - Data Catalog
+  - Data Governance
+  - Data Management
+
+operational:
+  resources:
+    - term: Domain
+      definition: A DataZone organizational boundary containing a data catalog, governance policies, and data sharing infrastructure
+    - term: Project
+      definition: A container within a domain for organizing data assets, environments, and team members around a business purpose
+    - term: Asset
+      definition: A cataloged data resource (table, file, API, report) published in the DataZone data catalog for discovery
+    - term: Listing
+      definition: A published version of a data asset made available for subscription in the DataZone business catalog
+    - term: Subscription
+      definition: An approved access grant allowing a project to use a subscribed data asset
+    - term: SubscriptionRequest
+      definition: A request submitted by a data consumer to gain access to a data asset listing
+    - term: Environment
+      definition: A configured data access environment within a project providing tools like Athena, Glue, or Redshift
+    - term: EnvironmentProfile
+      definition: A reusable template for creating environments with predefined configurations and tooling
+
+  actions:
+    - term: CreateDomain
+      definition: Provision a new DataZone domain as the governance and catalog boundary
+    - term: CreateProject
+      definition: Create a project within a domain to organize data and team access
+    - term: CreateAsset
+      definition: Catalog a data resource in the DataZone data catalog
+    - term: PublishListing
+      definition: Make a cataloged asset available for subscription in the business catalog
+    - term: CreateSubscriptionRequest
+      definition: Request access to a published data asset with business justification
+    - term: ApproveSubscriptionRequest
+      definition: Grant a subscription request to give the requesting project access to data
+    - term: RevokeSubscription
+      definition: Remove previously granted data access from a subscribing project
+
+  domainStatuses:
+    - term: AVAILABLE
+      definition: Domain is operational and ready for use
+    - term: CREATING
+      definition: Domain is being provisioned
+    - term: CREATION_FAILED
+      definition: Domain provisioning failed
+    - term: DELETING
+      definition: Domain is being removed
+    - term: DELETED
+      definition: Domain has been deleted
+
+  subscriptionStatuses:
+    - term: PENDING
+      definition: Subscription request has been submitted and awaits review
+    - term: ACCEPTED
+      definition: Subscription request was approved and access is being provisioned
+    - term: REJECTED
+      definition: Subscription request was declined by the data owner
+
+capability:
+  personas:
+    - term: Data Domain Owner
+      definition: Owner responsible for domain governance policies, user access, and catalog standards
+    - term: Data Producer
+      definition: Data owner who publishes and maintains data assets in the DataZone catalog
+    - term: Data Consumer
+      definition: Analyst or engineer who discovers, requests, and uses cataloged data assets
+
+  workflows:
+    - term: Set Up Data Domain
+      definition: Initializing a DataZone domain with projects and environments for data sharing
+    - term: Publish Data Asset
+      definition: Cataloging and publishing a data asset for discovery by other teams
+    - term: Request Data Access
+      definition: Discovering, requesting, and receiving access to a published data asset
+
+crossReference:
+  awsServices:
+    - term: AWS Glue
+      definition: DataZone integrates with Glue Data Catalog to auto-discover and catalog Glue tables
+      url: https://aws.amazon.com/glue/
+    - term: Amazon Redshift
+      definition: DataZone can catalog Redshift tables and govern data sharing between Redshift clusters
+      url: https://aws.amazon.com/redshift/
+    - term: Amazon Athena
+      definition: DataZone environments can provision Athena for querying cataloged S3 data
+      url: https://aws.amazon.com/athena/
+    - term: Amazon S3
+      definition: DataZone catalogs data assets stored in Amazon S3 and manages access through subscriptions
+      url: https://aws.amazon.com/s3/
+    - term: AWS Lake Formation
+      definition: DataZone uses Lake Formation for fine-grained data access control on subscribed assets
+      url: https://aws.amazon.com/lake-formation/
+    - term: AWS IAM
+      definition: IAM roles provide the execution context for DataZone domain operations and resource access
+      url: https://aws.amazon.com/iam/

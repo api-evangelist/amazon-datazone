@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-structure/environment-structure.json",
+  "title": "Environment",
+  "description": "A DataZone environment that provides data access capabilities for a project.",
+  "type": "typedMap",
+  "fields": {
+    "id": {
+      "type": "str",
+      "description": "The unique identifier of the environment"
+    },
+    "domainId": {
+      "type": "str",
+      "description": "domainId"
+    },
+    "projectId": {
+      "type": "str",
+      "description": "projectId"
+    },
+    "name": {
+      "type": "str",
+      "description": "name"
+    },
+    "status": {
+      "type": "str",
+      "description": "status"
+    },
+    "createdAt": {
+      "type": "str",
+      "description": "createdAt"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-structure/create-domain-request-structure.json",
+  "title": "Create Domain Request",
+  "description": "Request body for creating a DataZone domain.",
+  "type": "typedMap",
+  "fields": {
+    "name": {
+      "type": "str",
+      "description": "name"
+    },
+    "description": {
+      "type": "str",
+      "description": "description"
+    },
+    "domainExecutionRole": {
+      "type": "str",
+      "description": "domainExecutionRole"
+    },
+    "tags": {
+      "type": "map",
+      "description": "tags"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "SalesOrdersTable",
+  "description": "Daily sales orders from production",
+  "domainIdentifier": "dzd_1234567890abcde",
+  "owningProjectIdentifier": "prj_abc123",
+  "typeIdentifier": "amazon.datazone.RelationalTable"
+}

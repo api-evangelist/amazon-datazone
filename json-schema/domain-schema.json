@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-schema/domain-schema.json",
+  "title": "Domain",
+  "description": "A DataZone domain that serves as the organizational boundary for data catalog and governance.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the domain"
+    },
+    "arn": {
+      "type": "string",
+      "description": "The ARN of the DataZone domain. This ARN uniquely identifies the domain."
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "AVAILABLE",
+        "CREATING",
+        "DELETED"
+      ]
+    },
+    "portalUrl": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

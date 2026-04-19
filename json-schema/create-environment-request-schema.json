@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-datazone/json-schema/create-environment-request-schema.json",
+  "title": "Create Environment Request",
+  "description": "Request body for creating a DataZone environment.",
+  "type": "object",
+  "required": [
+    "name",
+    "domainIdentifier",
+    "projectIdentifier",
+    "environmentProfileIdentifier"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "domainIdentifier": {
+      "type": "string"
+    },
+    "projectIdentifier": {
+      "type": "string"
+    },
+    "environmentProfileIdentifier": {
+      "type": "string"
+    }
+  }
+}
