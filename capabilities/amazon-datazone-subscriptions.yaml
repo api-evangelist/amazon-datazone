@@ -1,0 +1,188 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon DataZone API — Subscriptions
+  description: 'Amazon DataZone API — Subscriptions. 3 operations. Lead operation: List Subscription Requests. Self-contained
+    Naftiko capability covering one Amazon Datazone business surface.'
+  tags:
+  - Amazon Datazone
+  - Subscriptions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_DATAZONE_API_KEY: AMAZON_DATAZONE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-datazone-subscriptions
+    baseUri: https://datazone.amazonaws.com
+    description: Amazon DataZone API — Subscriptions business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-domains-domainIdentifier-subscription-requests
+      path: /v2/domains/{domainIdentifier}/subscription-requests
+      operations:
+      - name: listsubscriptionrequests
+        method: GET
+        description: List Subscription Requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domainIdentifier
+          in: path
+          type: string
+          required: true
+        - name: status
+          in: query
+          type: string
+        - name: maxResults
+          in: query
+          type: integer
+      - name: createsubscriptionrequest
+        method: POST
+        description: Create Subscription Request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domainIdentifier
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v2-domains-domainIdentifier-subscriptions
+      path: /v2/domains/{domainIdentifier}/subscriptions
+      operations:
+      - name: listsubscriptions
+        method: GET
+        description: List Subscriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domainIdentifier
+          in: path
+          type: string
+          required: true
+        - name: status
+          in: query
+          type: string
+        - name: maxResults
+          in: query
+          type: integer
+        - name: nextToken
+          in: query
+          type: string
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_DATAZONE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-datazone-subscriptions-rest
+    port: 8080
+    description: REST adapter for Amazon DataZone API — Subscriptions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/domains/{domainidentifier}/subscription-requests
+      name: v2-domains-domainidentifier-subscription-requests
+      description: REST surface for v2-domains-domainIdentifier-subscription-requests.
+      operations:
+      - method: GET
+        name: listsubscriptionrequests
+        description: List Subscription Requests
+        call: amazon-datazone-subscriptions.listsubscriptionrequests
+        with:
+          domainIdentifier: rest.domainIdentifier
+          status: rest.status
+          maxResults: rest.maxResults
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsubscriptionrequest
+        description: Create Subscription Request
+        call: amazon-datazone-subscriptions.createsubscriptionrequest
+        with:
+          domainIdentifier: rest.domainIdentifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/domains/{domainidentifier}/subscriptions
+      name: v2-domains-domainidentifier-subscriptions
+      description: REST surface for v2-domains-domainIdentifier-subscriptions.
+      operations:
+      - method: GET
+        name: listsubscriptions
+        description: List Subscriptions
+        call: amazon-datazone-subscriptions.listsubscriptions
+        with:
+          domainIdentifier: rest.domainIdentifier
+          status: rest.status
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-datazone-subscriptions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon DataZone API — Subscriptions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-subscription-requests
+      description: List Subscription Requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-datazone-subscriptions.listsubscriptionrequests
+      with:
+        domainIdentifier: tools.domainIdentifier
+        status: tools.status
+        maxResults: tools.maxResults
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-subscription-request
+      description: Create Subscription Request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-datazone-subscriptions.createsubscriptionrequest
+      with:
+        domainIdentifier: tools.domainIdentifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-subscriptions
+      description: List Subscriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-datazone-subscriptions.listsubscriptions
+      with:
+        domainIdentifier: tools.domainIdentifier
+        status: tools.status
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,96 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon DataZone API — Listings
+  description: 'Amazon DataZone API — Listings. 1 operations. Lead operation: Search Listings. Self-contained Naftiko capability
+    covering one Amazon Datazone business surface.'
+  tags:
+  - Amazon Datazone
+  - Listings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_DATAZONE_API_KEY: AMAZON_DATAZONE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-datazone-listings
+    baseUri: https://datazone.amazonaws.com
+    description: Amazon DataZone API — Listings business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-domains-domainIdentifier-listings
+      path: /v2/domains/{domainIdentifier}/listings
+      operations:
+      - name: searchlistings
+        method: GET
+        description: Search Listings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domainIdentifier
+          in: path
+          type: string
+          required: true
+        - name: additionalAttributes
+          in: query
+          type: array
+        - name: maxResults
+          in: query
+          type: integer
+        - name: nextToken
+          in: query
+          type: string
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_DATAZONE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-datazone-listings-rest
+    port: 8080
+    description: REST adapter for Amazon DataZone API — Listings. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/domains/{domainidentifier}/listings
+      name: v2-domains-domainidentifier-listings
+      description: REST surface for v2-domains-domainIdentifier-listings.
+      operations:
+      - method: GET
+        name: searchlistings
+        description: Search Listings
+        call: amazon-datazone-listings.searchlistings
+        with:
+          domainIdentifier: rest.domainIdentifier
+          additionalAttributes: rest.additionalAttributes
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-datazone-listings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon DataZone API — Listings. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: search-listings
+      description: Search Listings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-datazone-listings.searchlistings
+      with:
+        domainIdentifier: tools.domainIdentifier
+        additionalAttributes: tools.additionalAttributes
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
