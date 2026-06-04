@@ -1,0 +1,79 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Provision Domain
+  summary: Create a DataZone domain and poll until it becomes AVAILABLE.
+  description: >-
+    Stands up a new Amazon DataZone domain, the organizational boundary that
+    holds a data catalog and governance policies. The workflow submits the
+    create request, then polls the domain detail endpoint until the asynchronous
+    provisioning transitions from CREATING to AVAILABLE so callers know the
+    domain is ready to host projects. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-domain
+  summary: Create a DataZone domain and wait for it to reach AVAILABLE status.
+  description: >-
+    Creates a domain with the supplied name and execution role, then repeatedly
+    reads the domain until its status is AVAILABLE before returning its
+    identifier and portal URL.
+  inputs:
+    type: object
+    required:
+    - name
+    - domainExecutionRole
+    properties:
+      name:
+        type: string
+        description: The name of the DataZone domain to create.
+      description:
+        type: string
+        description: An optional human-readable description of the domain.
+      domainExecutionRole:
+        type: string
+        description: ARN of the IAM role DataZone uses to execute domain operations.
+  steps:
+  - stepId: createDomain
+    description: >-
+      Submit the request to create the DataZone domain. The domain is created
+      asynchronously and starts in the CREATING state.
+    operationId: createDomain
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        description: $inputs.description
+        domainExecutionRole: $inputs.domainExecutionRole
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      domainId: $response.body#/id
+      initialStatus: $response.body#/status
+  - stepId: pollDomain
+    description: >-
+      Read the domain detail until provisioning completes. Repeats while the
+      status is still CREATING and proceeds once it reaches AVAILABLE.
+    operationId: getDomain
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $steps.createDomain.outputs.domainId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "AVAILABLE"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      portalUrl: $response.body#/portalUrl
+      arn: $response.body#/arn
+  outputs:
+    domainId: $steps.createDomain.outputs.domainId
+    status: $steps.pollDomain.outputs.status
+    portalUrl: $steps.pollDomain.outputs.portalUrl
+    arn: $steps.pollDomain.outputs.arn

@@ -67,6 +67,45 @@ apis:
   - type: NaftikoCapability
     url: capabilities/amazon-datazone-subscriptions.yaml
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/amazon-datazone-audit-domain-subscriptions-workflow.yml
+    name: Amazon DataZone Audit Domain Subscriptions
+    summary: List pending subscription requests and active subscriptions to audit data access.
+  - url: arazzo/amazon-datazone-bootstrap-domain-and-project-workflow.yml
+    name: Amazon DataZone Bootstrap Domain and Project
+    summary: Create a domain, wait for it to be AVAILABLE, then create a project inside it.
+  - url: arazzo/amazon-datazone-catalog-asset-workflow.yml
+    name: Amazon DataZone Catalog a Data Asset
+    summary: Create a data asset in a project and read it back to confirm cataloging.
+  - url: arazzo/amazon-datazone-discover-and-subscribe-workflow.yml
+    name: Amazon DataZone Discover and Subscribe
+    summary: Search catalog listings, then raise a subscription request for the first match.
+  - url: arazzo/amazon-datazone-onboard-data-workspace-workflow.yml
+    name: Amazon DataZone Onboard Data Workspace
+    summary: Create a project, catalog an asset, and provision an environment in one workspace flow.
+  - url: arazzo/amazon-datazone-provision-domain-workflow.yml
+    name: Amazon DataZone Provision Domain
+    summary: Create a DataZone domain and poll until it becomes AVAILABLE.
+  - url: arazzo/amazon-datazone-provision-environment-workflow.yml
+    name: Amazon DataZone Provision Environment
+    summary: Create a project environment and poll the environment list until it is ACTIVE.
+  - url: arazzo/amazon-datazone-publish-data-product-workflow.yml
+    name: Amazon DataZone Publish Data Product
+    summary: Create a project, catalog an asset in it, then search the catalog for the listing.
+  - url: arazzo/amazon-datazone-rename-project-workflow.yml
+    name: Amazon DataZone Rename Project
+    summary: Read a project, update its description, then read it back to confirm the change.
+  - url: arazzo/amazon-datazone-request-and-track-subscription-workflow.yml
+    name: Amazon DataZone Request and Track Subscription
+    summary: Create a subscription request, then poll the request list until it leaves PENDING.
+  - url: arazzo/amazon-datazone-teardown-domain-workflow.yml
+    name: Amazon DataZone Teardown Domain
+    summary: List projects in a domain and branch to delete the domain only when it is empty.
+  - url: arazzo/amazon-datazone-teardown-project-workflow.yml
+    name: Amazon DataZone Teardown Project
+    summary: Confirm a project exists, delete it, then verify the delete via a 404 read-back.
 - type: Portal
   url: https://aws.amazon.com/datazone/
 - type: DeveloperPortal

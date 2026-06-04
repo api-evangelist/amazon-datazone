@@ -1,0 +1,82 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Teardown Project
+  summary: Confirm a project exists, delete it, then verify the delete via a 404 read-back.
+  description: >-
+    Safely decommissions a DataZone project. It first reads the project to
+    confirm it exists, then deletes it, and finally reads it again expecting a
+    404 to prove the project was removed. This guards against deleting the wrong
+    project and verifies the destructive action actually took effect. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: teardown-project
+  summary: Verify, delete, and confirm removal of a DataZone project.
+  description: >-
+    Reads the project to confirm it exists, deletes it, and reads it again
+    expecting a 404 Not Found to confirm the deletion completed.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    - identifier
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the domain that owns the project.
+      identifier:
+        type: string
+        description: The identifier of the project to delete.
+  steps:
+  - stepId: confirmProject
+    description: Read the project to confirm it exists before deleting it.
+    operationId: getProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      projectName: $response.body#/name
+  - stepId: deleteProject
+    description: Delete the confirmed project. A 204 indicates successful deletion.
+    operationId: deleteProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      deletedStatus: $statusCode
+  - stepId: verifyGone
+    description: >-
+      Read the project again expecting a 404 Not Found to confirm the project was
+      fully removed.
+    operationId: getProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    successCriteria:
+    - condition: $statusCode == 404
+    outputs:
+      finalStatus: $statusCode
+  outputs:
+    projectName: $steps.confirmProject.outputs.projectName
+    finalStatus: $steps.verifyGone.outputs.finalStatus

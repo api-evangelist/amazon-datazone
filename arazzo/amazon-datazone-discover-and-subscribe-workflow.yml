@@ -1,0 +1,97 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Discover and Subscribe
+  summary: Search catalog listings, then raise a subscription request for the first match.
+  description: >-
+    Drives the data-consumer access pattern in Amazon DataZone. It searches the
+    catalog listings in a domain, branches on whether any listing was returned,
+    and when a match is found it raises a subscription request that names the
+    discovered listing and the requesting project as the subscribing principal.
+    When no listing matches, the workflow ends without creating a request. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: discover-and-subscribe
+  summary: Find a catalog listing and request a subscription to it for a project.
+  description: >-
+    Searches listings in the domain catalog, and when at least one listing is
+    returned, creates a subscription request binding the first listing to the
+    requesting project.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    - subscribingProjectIdentifier
+    - requestReason
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the domain whose catalog is searched.
+      subscribingProjectIdentifier:
+        type: string
+        description: The project identifier that will own the subscription.
+      requestReason:
+        type: string
+        description: The business justification for the subscription request.
+  steps:
+  - stepId: searchListings
+    description: >-
+      Search the domain catalog for available asset listings to subscribe to.
+    operationId: searchListings
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: maxResults
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstListingId: $response.body#/items/0/id
+    onSuccess:
+    - name: listingFound
+      type: goto
+      stepId: requestSubscription
+      criteria:
+      - context: $response.body
+        condition: $.items.length > 0
+        type: jsonpath
+    - name: noListing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.items.length == 0
+        type: jsonpath
+  - stepId: requestSubscription
+    description: >-
+      Raise a subscription request for the discovered listing on behalf of the
+      subscribing project. The request is created in the PENDING state.
+    operationId: createSubscriptionRequest
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        requestReason: $inputs.requestReason
+        subscribedListings:
+        - identifier: $steps.searchListings.outputs.firstListingId
+        subscribedPrincipals:
+        - project:
+            identifier: $inputs.subscribingProjectIdentifier
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      subscriptionRequestId: $response.body#/id
+      status: $response.body#/status
+  outputs:
+    listingId: $steps.searchListings.outputs.firstListingId
+    subscriptionRequestId: $steps.requestSubscription.outputs.subscriptionRequestId
+    status: $steps.requestSubscription.outputs.status

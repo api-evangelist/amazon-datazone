@@ -1,0 +1,90 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Teardown Domain
+  summary: List projects in a domain and branch to delete the domain only when it is empty.
+  description: >-
+    Decommissions a DataZone domain guarded by a safety check. It lists the
+    projects in the domain and branches: when no projects remain, it deletes the
+    domain and polls until the domain reports a DELETING or DELETED status; when
+    projects still exist, it ends without deleting to avoid destroying active
+    workspaces. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: teardown-domain
+  summary: Delete a domain only when it contains no projects, then confirm deletion.
+  description: >-
+    Lists the domain's projects and, only when the list is empty, initiates
+    domain deletion and reads the domain back to confirm it has entered the
+    deletion lifecycle.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the domain to tear down.
+  steps:
+  - stepId: listProjects
+    description: >-
+      List the projects in the domain to decide whether it is safe to delete.
+    operationId: listProjects
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      projects: $response.body#/items
+    onSuccess:
+    - name: domainEmpty
+      type: goto
+      stepId: deleteDomain
+      criteria:
+      - context: $response.body
+        condition: $.items.length == 0
+        type: jsonpath
+    - name: domainNotEmpty
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.items.length > 0
+        type: jsonpath
+  - stepId: deleteDomain
+    description: >-
+      Delete the empty domain. A 202 Accepted indicates deletion was initiated
+      asynchronously.
+    operationId: deleteDomain
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      deleteStatus: $response.body#/status
+  - stepId: confirmDeleting
+    description: >-
+      Read the domain back to confirm it has entered the deletion lifecycle
+      (DELETING or DELETED).
+    operationId: getDomain
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "DELETING" || $.status == "DELETED"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+  outputs:
+    deleteStatus: $steps.deleteDomain.outputs.deleteStatus
+    status: $steps.confirmDeleting.outputs.status

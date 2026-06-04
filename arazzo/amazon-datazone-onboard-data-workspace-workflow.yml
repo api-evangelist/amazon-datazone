@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Onboard Data Workspace
+  summary: Create a project, catalog an asset, and provision an environment in one workspace flow.
+  description: >-
+    Onboards a complete analytics workspace inside an existing Amazon DataZone
+    domain. It creates a project, catalogs a first data asset under that project,
+    provisions an analytics environment from a profile, and polls the project's
+    environment list until the environment is ACTIVE. The result is a project
+    that already has data and a ready compute environment. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: onboard-data-workspace
+  summary: Create project, catalog asset, and provision an ACTIVE environment.
+  description: >-
+    Creates a project in the domain, catalogs an asset under it, creates an
+    environment from a profile, and waits until that environment reports ACTIVE.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    - projectName
+    - assetName
+    - typeIdentifier
+    - environmentName
+    - environmentProfileIdentifier
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the existing domain to onboard into.
+      projectName:
+        type: string
+        description: The name of the project to create.
+      assetName:
+        type: string
+        description: The name of the first asset to catalog under the project.
+      typeIdentifier:
+        type: string
+        description: The asset type identifier (e.g. amazon.datazone.RelationalTable).
+      environmentName:
+        type: string
+        description: The name of the analytics environment to provision.
+      environmentProfileIdentifier:
+        type: string
+        description: The environment profile that defines the environment blueprint.
+  steps:
+  - stepId: createProject
+    description: Create the project that anchors the new workspace.
+    operationId: createProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.projectName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      projectId: $response.body#/id
+  - stepId: catalogAsset
+    description: Catalog the first data asset under the new project.
+    operationId: createAsset
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.assetName
+        domainIdentifier: $inputs.domainIdentifier
+        owningProjectIdentifier: $steps.createProject.outputs.projectId
+        typeIdentifier: $inputs.typeIdentifier
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      assetId: $response.body#/id
+  - stepId: createEnvironment
+    description: >-
+      Provision an analytics environment for the project from the supplied
+      profile. The environment starts in the CREATING state.
+    operationId: createEnvironment
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.environmentName
+        domainIdentifier: $inputs.domainIdentifier
+        projectIdentifier: $steps.createProject.outputs.projectId
+        environmentProfileIdentifier: $inputs.environmentProfileIdentifier
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      environmentId: $response.body#/id
+  - stepId: waitForEnvironment
+    description: >-
+      List the project's environments and repeat until the created environment
+      reports ACTIVE.
+    operationId: listEnvironments
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: projectIdentifier
+      in: query
+      value: $steps.createProject.outputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.items[?(@.id == "$steps.createEnvironment.outputs.environmentId")].status == "ACTIVE"
+      type: jsonpath
+    outputs:
+      environments: $response.body#/items
+  outputs:
+    projectId: $steps.createProject.outputs.projectId
+    assetId: $steps.catalogAsset.outputs.assetId
+    environmentId: $steps.createEnvironment.outputs.environmentId

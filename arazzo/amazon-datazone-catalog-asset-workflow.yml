@@ -1,0 +1,84 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Catalog a Data Asset
+  summary: Create a data asset in a project and read it back to confirm cataloging.
+  description: >-
+    Registers a new data asset in the Amazon DataZone catalog under an owning
+    project and then reads the asset back to verify it was stored with the
+    expected name and type. This is the core catalog-a-dataset pattern used when
+    onboarding a relational table or other data product into a governed domain.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: catalog-asset
+  summary: Create a data asset under a project and confirm it via a read-back.
+  description: >-
+    Creates a data asset owned by the given project and type, then fetches the
+    asset detail to confirm the catalog entry exists.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    - owningProjectIdentifier
+    - name
+    - typeIdentifier
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the domain that owns the catalog.
+      owningProjectIdentifier:
+        type: string
+        description: The identifier of the project that owns the asset.
+      name:
+        type: string
+        description: The name of the data asset to catalog.
+      description:
+        type: string
+        description: An optional description of the data asset.
+      typeIdentifier:
+        type: string
+        description: The asset type identifier (e.g. amazon.datazone.RelationalTable).
+  steps:
+  - stepId: createAsset
+    description: Register the data asset in the catalog under the owning project.
+    operationId: createAsset
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        description: $inputs.description
+        domainIdentifier: $inputs.domainIdentifier
+        owningProjectIdentifier: $inputs.owningProjectIdentifier
+        typeIdentifier: $inputs.typeIdentifier
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      assetId: $response.body#/id
+  - stepId: confirmAsset
+    description: Read the asset back to confirm it was cataloged successfully.
+    operationId: getAsset
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: identifier
+      in: path
+      value: $steps.createAsset.outputs.assetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      assetName: $response.body#/name
+      owningProjectId: $response.body#/owningProjectId
+      createdAt: $response.body#/createdAt
+  outputs:
+    assetId: $steps.createAsset.outputs.assetId
+    assetName: $steps.confirmAsset.outputs.assetName

@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Provision Environment
+  summary: Create a project environment and poll the environment list until it is ACTIVE.
+  description: >-
+    Provisions an analytics environment inside an Amazon DataZone project from an
+    environment profile, then polls the project's environment list until the new
+    environment transitions from CREATING to ACTIVE. This gives data teams a
+    ready-to-use compute and access environment (for example Athena and Glue
+    access) bound to their project. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-environment
+  summary: Create an environment in a project and wait until it reports ACTIVE.
+  description: >-
+    Creates an environment from a profile under a project, then lists the
+    project's environments and repeats until the created environment is ACTIVE.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    - projectIdentifier
+    - name
+    - environmentProfileIdentifier
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the domain that owns the project.
+      projectIdentifier:
+        type: string
+        description: The identifier of the project to create the environment in.
+      name:
+        type: string
+        description: The name of the environment to create.
+      description:
+        type: string
+        description: An optional description of the environment.
+      environmentProfileIdentifier:
+        type: string
+        description: The environment profile that defines the environment blueprint.
+  steps:
+  - stepId: createEnvironment
+    description: >-
+      Create the environment under the project from the supplied environment
+      profile. The environment starts in the CREATING state.
+    operationId: createEnvironment
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        description: $inputs.description
+        domainIdentifier: $inputs.domainIdentifier
+        projectIdentifier: $inputs.projectIdentifier
+        environmentProfileIdentifier: $inputs.environmentProfileIdentifier
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      environmentId: $response.body#/id
+      initialStatus: $response.body#/status
+  - stepId: waitForEnvironment
+    description: >-
+      List the project's environments and repeat until the created environment
+      reports ACTIVE. The list is scoped to the owning project.
+    operationId: listEnvironments
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: projectIdentifier
+      in: query
+      value: $inputs.projectIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.items[?(@.id == "$steps.createEnvironment.outputs.environmentId")].status == "ACTIVE"
+      type: jsonpath
+    outputs:
+      environments: $response.body#/items
+  outputs:
+    environmentId: $steps.createEnvironment.outputs.environmentId
+    environments: $steps.waitForEnvironment.outputs.environments

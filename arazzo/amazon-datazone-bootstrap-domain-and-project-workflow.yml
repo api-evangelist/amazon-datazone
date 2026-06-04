@@ -1,0 +1,105 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Bootstrap Domain and Project
+  summary: Create a domain, wait for it to be AVAILABLE, then create a project inside it.
+  description: >-
+    End-to-end bootstrap for a fresh Amazon DataZone workspace. It creates a
+    governance domain, polls until the domain reaches the AVAILABLE state, and
+    then creates a project inside that domain to hold data assets and
+    environments. Finally it reads the project back to confirm it exists. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: bootstrap-domain-and-project
+  summary: Provision a domain and create a first project within it once ready.
+  description: >-
+    Creates a domain, waits for it to become AVAILABLE, creates a project under
+    the new domain, and reads the project back to confirm creation.
+  inputs:
+    type: object
+    required:
+    - domainName
+    - domainExecutionRole
+    - projectName
+    properties:
+      domainName:
+        type: string
+        description: The name of the DataZone domain to create.
+      domainExecutionRole:
+        type: string
+        description: ARN of the IAM role DataZone uses to execute domain operations.
+      projectName:
+        type: string
+        description: The name of the project to create inside the new domain.
+      projectDescription:
+        type: string
+        description: An optional description for the project.
+  steps:
+  - stepId: createDomain
+    description: Create the DataZone domain that will contain the project.
+    operationId: createDomain
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.domainName
+        domainExecutionRole: $inputs.domainExecutionRole
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      domainId: $response.body#/id
+  - stepId: waitForDomain
+    description: >-
+      Poll the domain until it reaches AVAILABLE so the project create call has a
+      ready domain to attach to.
+    operationId: getDomain
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $steps.createDomain.outputs.domainId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "AVAILABLE"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+  - stepId: createProject
+    description: Create a project inside the newly provisioned domain.
+    operationId: createProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $steps.createDomain.outputs.domainId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.projectName
+        description: $inputs.projectDescription
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      projectId: $response.body#/id
+  - stepId: confirmProject
+    description: Read the created project back to confirm it was registered.
+    operationId: getProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $steps.createDomain.outputs.domainId
+    - name: identifier
+      in: path
+      value: $steps.createProject.outputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      projectName: $response.body#/name
+      createdAt: $response.body#/createdAt
+  outputs:
+    domainId: $steps.createDomain.outputs.domainId
+    projectId: $steps.createProject.outputs.projectId
+    projectName: $steps.confirmProject.outputs.projectName

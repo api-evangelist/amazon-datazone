@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Rename Project
+  summary: Read a project, update its description, then read it back to confirm the change.
+  description: >-
+    Edits a DataZone project's metadata safely. It first reads the project to
+    capture its current name and description, applies an update with the new
+    description, and then reads the project again to confirm the change took
+    effect. This read-update-read pattern gives callers a verifiable mutation of
+    project metadata. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: rename-project
+  summary: Update a project's description and confirm it via a read-back.
+  description: >-
+    Reads the current project, patches its description, and re-reads the project
+    to confirm the updated metadata was persisted.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    - identifier
+    - newDescription
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the domain that owns the project.
+      identifier:
+        type: string
+        description: The identifier of the project to update.
+      newDescription:
+        type: string
+        description: The new description to apply to the project.
+  steps:
+  - stepId: readProject
+    description: Read the project to capture its current name and description.
+    operationId: getProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentName: $response.body#/name
+      currentDescription: $response.body#/description
+  - stepId: updateProject
+    description: Apply the new description to the project.
+    operationId: updateProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    requestBody:
+      contentType: application/json
+      payload:
+        description: $inputs.newDescription
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedDescription: $response.body#/description
+  - stepId: confirmUpdate
+    description: Re-read the project to confirm the new description persisted.
+    operationId: getProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.description == "$inputs.newDescription"
+      type: jsonpath
+    outputs:
+      confirmedDescription: $response.body#/description
+  outputs:
+    previousDescription: $steps.readProject.outputs.currentDescription
+    confirmedDescription: $steps.confirmUpdate.outputs.confirmedDescription

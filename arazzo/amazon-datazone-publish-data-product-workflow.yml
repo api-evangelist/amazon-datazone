@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Publish Data Product
+  summary: Create a project, catalog an asset in it, then search the catalog for the listing.
+  description: >-
+    Stands up a complete data product in one pass: it creates a project to own
+    the asset, registers the data asset in the catalog, reads the asset back to
+    confirm it, and finally searches the domain listings so the publisher can see
+    the product surface in the catalog for consumers. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: publish-data-product
+  summary: Create a project, catalog an asset under it, and surface it in listings.
+  description: >-
+    Creates an owning project, catalogs a data asset, confirms the asset, and
+    searches the domain catalog listings to verify the product is discoverable.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    - projectName
+    - assetName
+    - typeIdentifier
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the domain that owns the catalog.
+      projectName:
+        type: string
+        description: The name of the project that will own the asset.
+      assetName:
+        type: string
+        description: The name of the data asset to catalog.
+      assetDescription:
+        type: string
+        description: An optional description of the data asset.
+      typeIdentifier:
+        type: string
+        description: The asset type identifier (e.g. amazon.datazone.RelationalTable).
+  steps:
+  - stepId: createProject
+    description: Create the project that will own the published data asset.
+    operationId: createProject
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.projectName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      projectId: $response.body#/id
+  - stepId: createAsset
+    description: Catalog the data asset under the newly created owning project.
+    operationId: createAsset
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.assetName
+        description: $inputs.assetDescription
+        domainIdentifier: $inputs.domainIdentifier
+        owningProjectIdentifier: $steps.createProject.outputs.projectId
+        typeIdentifier: $inputs.typeIdentifier
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      assetId: $response.body#/id
+  - stepId: confirmAsset
+    description: Read the asset back to confirm the catalog entry exists.
+    operationId: getAsset
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: identifier
+      in: path
+      value: $steps.createAsset.outputs.assetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      assetName: $response.body#/name
+  - stepId: searchCatalog
+    description: >-
+      Search the domain listings so the publisher can confirm the data product
+      is surfaced in the consumer-facing catalog.
+    operationId: searchListings
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: maxResults
+      in: query
+      value: 25
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      listings: $response.body#/items
+  outputs:
+    projectId: $steps.createProject.outputs.projectId
+    assetId: $steps.createAsset.outputs.assetId
+    listings: $steps.searchCatalog.outputs.listings

@@ -1,0 +1,66 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Audit Domain Subscriptions
+  summary: List pending subscription requests and active subscriptions to audit data access.
+  description: >-
+    Produces a governance snapshot of data access in a domain. It first lists the
+    PENDING subscription requests awaiting a decision, then lists the APPROVED
+    subscriptions already in force, returning both so a steward can review who is
+    requesting access and who already has it. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: audit-domain-subscriptions
+  summary: Pull pending requests and approved subscriptions for a domain in one pass.
+  description: >-
+    Lists subscription requests in the PENDING state and subscriptions in the
+    APPROVED state so a data steward can audit access across the domain.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the domain to audit.
+  steps:
+  - stepId: listPendingRequests
+    description: >-
+      List subscription requests that are still PENDING and awaiting a governance
+      decision.
+    operationId: listSubscriptionRequests
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: status
+      in: query
+      value: PENDING
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      pendingRequests: $response.body#/items
+  - stepId: listApprovedSubscriptions
+    description: >-
+      List subscriptions that are APPROVED, representing access currently granted
+      in the domain.
+    operationId: listSubscriptions
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    - name: status
+      in: query
+      value: APPROVED
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      approvedSubscriptions: $response.body#/items
+  outputs:
+    pendingRequests: $steps.listPendingRequests.outputs.pendingRequests
+    approvedSubscriptions: $steps.listApprovedSubscriptions.outputs.approvedSubscriptions

@@ -1,0 +1,86 @@
+arazzo: 1.0.1
+info:
+  title: Amazon DataZone Request and Track Subscription
+  summary: Create a subscription request, then poll the request list until it leaves PENDING.
+  description: >-
+    Creates a subscription request for a known catalog listing and then tracks
+    its approval lifecycle by polling the subscription request list until the
+    request is no longer PENDING (it has been ACCEPTED or REJECTED). This lets a
+    consumer submit a data access request and wait for a governance decision in a
+    single automated flow. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataZoneApi
+  url: ../openapi/amazon-datazone-openapi.yml
+  type: openapi
+workflows:
+- workflowId: request-and-track-subscription
+  summary: Submit a subscription request and poll until it is decided.
+  description: >-
+    Creates a subscription request for a listing on behalf of a project, then
+    lists subscription requests and repeats until the created request leaves the
+    PENDING state.
+  inputs:
+    type: object
+    required:
+    - domainIdentifier
+    - listingIdentifier
+    - subscribingProjectIdentifier
+    - requestReason
+    properties:
+      domainIdentifier:
+        type: string
+        description: The identifier of the domain that owns the catalog.
+      listingIdentifier:
+        type: string
+        description: The identifier of the catalog listing to subscribe to.
+      subscribingProjectIdentifier:
+        type: string
+        description: The project identifier that will own the subscription.
+      requestReason:
+        type: string
+        description: The business justification for the subscription request.
+  steps:
+  - stepId: createRequest
+    description: >-
+      Create the subscription request for the listing on behalf of the project.
+      The request starts in the PENDING state.
+    operationId: createSubscriptionRequest
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        requestReason: $inputs.requestReason
+        subscribedListings:
+        - identifier: $inputs.listingIdentifier
+        subscribedPrincipals:
+        - project:
+            identifier: $inputs.subscribingProjectIdentifier
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      subscriptionRequestId: $response.body#/id
+      initialStatus: $response.body#/status
+  - stepId: trackRequest
+    description: >-
+      List subscription requests and repeat until the created request is no
+      longer PENDING, indicating a governance decision was made.
+    operationId: listSubscriptionRequests
+    parameters:
+    - name: domainIdentifier
+      in: path
+      value: $inputs.domainIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.items[?(@.id == "$steps.createRequest.outputs.subscriptionRequestId")].status != "PENDING"
+      type: jsonpath
+    outputs:
+      requests: $response.body#/items
+  outputs:
+    subscriptionRequestId: $steps.createRequest.outputs.subscriptionRequestId
+    requests: $steps.trackRequest.outputs.requests
