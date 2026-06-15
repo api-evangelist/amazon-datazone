@@ -1,0 +1,2436 @@
+{
+  "info": {
+    "_postman_id": "59718295-fbc9-480c-bbf3-44eee4f83797",
+    "name": "Amazon DataZone API",
+    "description": "The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.\n\nContact Support:\n Name: AWS Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:02:57.000Z",
+    "updatedAt": "2026-06-05T15:02:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-59718295-fbc9-480c-bbf3-44eee4f83797"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "domains",
+          "item": [
+            {
+              "name": "{domainIdentifier}",
+              "item": [
+                {
+                  "name": "projects",
+                  "item": [
+                    {
+                      "name": "{identifier}",
+                      "item": [
+                        {
+                          "name": "Get Project",
+                          "id": "8b9d2119-0215-4950-aca2-8dda9fca45b4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects/:identifier",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "projects",
+                                ":identifier"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9035356b-ea31-43c0-9716-b70062a6ad24",
+                                  "key": "domainIdentifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "b944f1a0-0529-4ef6-8319-6d4f3e4fbda9",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Gets the details of a DataZone project."
+                          },
+                          "response": [
+                            {
+                              "id": "ceae62f9-c8ef-432f-a8e1-9690e664e9b5",
+                              "name": "Project details returned successfully",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "domains",
+                                    ":domainIdentifier",
+                                    "projects",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domainIdentifier"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"domainId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-06-05T15:02:58.000Z",
+                              "updatedAt": "2026-06-05T15:02:58.000Z",
+                              "uid": "35240-ceae62f9-c8ef-432f-a8e1-9690e664e9b5"
+                            },
+                            {
+                              "id": "143917c3-7df6-4dec-b575-c4093098dbdd",
+                              "name": "Project not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "domains",
+                                    ":domainIdentifier",
+                                    "projects",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domainIdentifier"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:02:58.000Z",
+                              "updatedAt": "2026-06-05T15:02:58.000Z",
+                              "uid": "35240-143917c3-7df6-4dec-b575-c4093098dbdd"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-8b9d2119-0215-4950-aca2-8dda9fca45b4"
+                        },
+                        {
+                          "name": "Update Project",
+                          "id": "dcb2764d-623c-49e9-9ed8-d4dab4af9dea",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects/:identifier",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "projects",
+                                ":identifier"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e4705925-bda7-4019-b844-c4ce4b739b57",
+                                  "key": "domainIdentifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "f94886bc-1c85-42fb-ba97-58a655871e38",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Updates a DataZone project."
+                          },
+                          "response": [
+                            {
+                              "id": "3a4e197c-2f13-40a8-845d-0284b65a6f39",
+                              "name": "Project updated successfully",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "domains",
+                                    ":domainIdentifier",
+                                    "projects",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domainIdentifier"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"domainId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-06-05T15:02:58.000Z",
+                              "updatedAt": "2026-06-05T15:02:58.000Z",
+                              "uid": "35240-3a4e197c-2f13-40a8-845d-0284b65a6f39"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-dcb2764d-623c-49e9-9ed8-d4dab4af9dea"
+                        },
+                        {
+                          "name": "Delete Project",
+                          "id": "510d0793-74d2-48d9-910f-81ac9aefb4bb",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects/:identifier",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "projects",
+                                ":identifier"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "917c3ada-472f-4998-b2e2-f3e6a29b55d0",
+                                  "key": "domainIdentifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "f062968d-d3e6-4d0d-a00a-ea4db690bb28",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Deletes a DataZone project."
+                          },
+                          "response": [
+                            {
+                              "id": "d3127d0f-2c83-4424-8b89-3113e9c226ed",
+                              "name": "Project deleted successfully",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "domains",
+                                    ":domainIdentifier",
+                                    "projects",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domainIdentifier"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:02:58.000Z",
+                              "updatedAt": "2026-06-05T15:02:58.000Z",
+                              "uid": "35240-d3127d0f-2c83-4424-8b89-3113e9c226ed"
+                            },
+                            {
+                              "id": "ca2c58dd-6a6a-4dc3-81e5-51efca3416e6",
+                              "name": "Project not found",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "domains",
+                                    ":domainIdentifier",
+                                    "projects",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domainIdentifier"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:02:58.000Z",
+                              "updatedAt": "2026-06-05T15:02:58.000Z",
+                              "uid": "35240-ca2c58dd-6a6a-4dc3-81e5-51efca3416e6"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-510d0793-74d2-48d9-910f-81ac9aefb4bb"
+                        }
+                      ],
+                      "id": "6ef6e9cd-2e3b-4678-b7c7-1742ff6f9e16",
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-6ef6e9cd-2e3b-4678-b7c7-1742ff6f9e16"
+                    },
+                    {
+                      "name": "List Projects",
+                      "id": "f68c8fdb-7088-4606-a93f-1c8aef99e727",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier",
+                            "projects"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "7c14dff8-cf3c-4174-ac29-ba02b69001e0",
+                              "key": "domainIdentifier",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Lists projects within a DataZone domain."
+                      },
+                      "response": [
+                        {
+                          "id": "9e72ce09-256f-4e4c-92c4-a9ef04f682a6",
+                          "name": "List of projects returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects?maxResults=<integer>&nextToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "projects"
+                              ],
+                              "query": [
+                                {
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domainIdentifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"domainId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"domainId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-9e72ce09-256f-4e4c-92c4-a9ef04f682a6"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-f68c8fdb-7088-4606-a93f-1c8aef99e727"
+                    },
+                    {
+                      "name": "Create Project",
+                      "id": "d9e29366-6827-40f3-a6ed-c704d9c16cf1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier",
+                            "projects"
+                          ],
+                          "variable": [
+                            {
+                              "id": "98d206d3-b9fd-454b-b3eb-54e4fe56bf60",
+                              "key": "domainIdentifier",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Creates a project in a DataZone domain. Projects are containers for data assets and environments."
+                      },
+                      "response": [
+                        {
+                          "id": "f40817cb-1610-4a1f-97d5-e2ef0cd3d967",
+                          "name": "Project created successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/projects",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "projects"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domainIdentifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"domainId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-f40817cb-1610-4a1f-97d5-e2ef0cd3d967"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-d9e29366-6827-40f3-a6ed-c704d9c16cf1"
+                    }
+                  ],
+                  "id": "51317530-78a5-42dc-9fc4-515385159dab",
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-51317530-78a5-42dc-9fc4-515385159dab"
+                },
+                {
+                  "name": "assets",
+                  "item": [
+                    {
+                      "name": "{identifier}",
+                      "item": [
+                        {
+                          "name": "Get Asset",
+                          "id": "c8187bdd-3948-4add-bc19-539a146ddd94",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/assets/:identifier",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "assets",
+                                ":identifier"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b0bffdc1-62c8-4c06-8c95-3964c12b9088",
+                                  "key": "domainIdentifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "a30c0563-9906-4c56-be20-d24d56d06501",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Gets the details of a data asset in the DataZone catalog."
+                          },
+                          "response": [
+                            {
+                              "id": "075d7d80-2ef9-4303-ac65-5f309a5ee3af",
+                              "name": "Asset details returned successfully",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/assets/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "domains",
+                                    ":domainIdentifier",
+                                    "assets",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domainIdentifier"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"domainId\": \"<string>\",\n  \"owningProjectId\": \"<string>\",\n  \"typeIdentifier\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-06-05T15:02:58.000Z",
+                              "updatedAt": "2026-06-05T15:02:58.000Z",
+                              "uid": "35240-075d7d80-2ef9-4303-ac65-5f309a5ee3af"
+                            },
+                            {
+                              "id": "b2605d35-d582-4ece-9168-72e82efb77d5",
+                              "name": "Asset not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/assets/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "domains",
+                                    ":domainIdentifier",
+                                    "assets",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domainIdentifier"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:02:58.000Z",
+                              "updatedAt": "2026-06-05T15:02:58.000Z",
+                              "uid": "35240-b2605d35-d582-4ece-9168-72e82efb77d5"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-c8187bdd-3948-4add-bc19-539a146ddd94"
+                        },
+                        {
+                          "name": "Delete Asset",
+                          "id": "86c00007-f500-46c7-9800-958b6b3705d8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/assets/:identifier",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "assets",
+                                ":identifier"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ab0ba97c-a843-4bd9-8e61-7bbf19b8c314",
+                                  "key": "domainIdentifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "682a7ed7-430d-4bce-9ff1-2f3b67db852e",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Deletes a data asset from the DataZone catalog."
+                          },
+                          "response": [
+                            {
+                              "id": "b79a952d-0fbd-47b7-b2d6-24ecd010f70a",
+                              "name": "Asset deleted successfully",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/assets/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "domains",
+                                    ":domainIdentifier",
+                                    "assets",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domainIdentifier"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:02:58.000Z",
+                              "updatedAt": "2026-06-05T15:02:58.000Z",
+                              "uid": "35240-b79a952d-0fbd-47b7-b2d6-24ecd010f70a"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-86c00007-f500-46c7-9800-958b6b3705d8"
+                        }
+                      ],
+                      "id": "e93ecdc7-fe60-489c-a425-aba25dc219b1",
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-e93ecdc7-fe60-489c-a425-aba25dc219b1"
+                    },
+                    {
+                      "name": "Create Asset",
+                      "id": "ed06e5cb-459a-47e3-9eb3-c45b3f334c97",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"domainIdentifier\": \"<string>\",\n  \"owningProjectIdentifier\": \"<string>\",\n  \"typeIdentifier\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/assets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier",
+                            "assets"
+                          ],
+                          "variable": [
+                            {
+                              "id": "014b83c7-f7c5-4e43-8589-354440610d29",
+                              "key": "domainIdentifier",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Creates a data asset in the DataZone catalog."
+                      },
+                      "response": [
+                        {
+                          "id": "0beded06-aa3e-4af3-8919-03b19eeedcf0",
+                          "name": "Asset created successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"domainIdentifier\": \"<string>\",\n  \"owningProjectIdentifier\": \"<string>\",\n  \"typeIdentifier\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/assets",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "assets"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domainIdentifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"domainId\": \"<string>\",\n  \"owningProjectId\": \"<string>\",\n  \"typeIdentifier\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-0beded06-aa3e-4af3-8919-03b19eeedcf0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-ed06e5cb-459a-47e3-9eb3-c45b3f334c97"
+                    }
+                  ],
+                  "id": "88b8de92-a39e-445a-b945-5aebe9dcb365",
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-88b8de92-a39e-445a-b945-5aebe9dcb365"
+                },
+                {
+                  "name": "subscriptions",
+                  "item": [
+                    {
+                      "name": "List Subscriptions",
+                      "id": "14209f13-c4cc-4070-8021-db1b92ce1262",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/subscriptions?status=REVOKED&maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier",
+                            "subscriptions"
+                          ],
+                          "query": [
+                            {
+                              "key": "status",
+                              "value": "REVOKED"
+                            },
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "ee173f69-f454-418b-9079-4ba79695c538",
+                              "key": "domainIdentifier",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Lists subscriptions in a DataZone domain."
+                      },
+                      "response": [
+                        {
+                          "id": "a369c92b-7beb-43a2-9d39-923cfe21a79c",
+                          "name": "List of subscriptions returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/subscriptions?status=REVOKED&maxResults=<integer>&nextToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "subscriptions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "status",
+                                  "value": "REVOKED"
+                                },
+                                {
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domainIdentifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"nextToken\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-a369c92b-7beb-43a2-9d39-923cfe21a79c"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-14209f13-c4cc-4070-8021-db1b92ce1262"
+                    }
+                  ],
+                  "id": "35d95efa-0c25-439e-82af-0b6b092a8d38",
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-35d95efa-0c25-439e-82af-0b6b092a8d38"
+                },
+                {
+                  "name": "subscription-requests",
+                  "item": [
+                    {
+                      "name": "List Subscription Requests",
+                      "id": "d96c0e4c-ed52-4e5c-baf2-550466b7ba09",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/subscription-requests?status=REJECTED&maxResults=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier",
+                            "subscription-requests"
+                          ],
+                          "query": [
+                            {
+                              "key": "status",
+                              "value": "REJECTED"
+                            },
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "0d5bc909-f742-4da3-be3b-a4ae95f9b46b",
+                              "key": "domainIdentifier",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Lists subscription requests in a DataZone domain."
+                      },
+                      "response": [
+                        {
+                          "id": "2d52849d-8b44-4f22-83c9-219414d097a3",
+                          "name": "List of subscription requests returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/subscription-requests?status=REJECTED&maxResults=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "subscription-requests"
+                              ],
+                              "query": [
+                                {
+                                  "key": "status",
+                                  "value": "REJECTED"
+                                },
+                                {
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domainIdentifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"domainId\": \"<string>\",\n      \"status\": \"REJECTED\",\n      \"requestReason\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"domainId\": \"<string>\",\n      \"status\": \"REJECTED\",\n      \"requestReason\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-2d52849d-8b44-4f22-83c9-219414d097a3"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-d96c0e4c-ed52-4e5c-baf2-550466b7ba09"
+                    },
+                    {
+                      "name": "Create Subscription Request",
+                      "id": "87586ed6-6b87-4c59-b29e-215e4ddf68dd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"requestReason\": \"<string>\",\n  \"subscribedListings\": [],\n  \"subscribedPrincipals\": []\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/subscription-requests",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier",
+                            "subscription-requests"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2419fafa-3a1e-4d12-b6e4-c2249fc88682",
+                              "key": "domainIdentifier",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Creates a request to subscribe to a data asset listing."
+                      },
+                      "response": [
+                        {
+                          "id": "43f9d105-17dd-4d4f-bcff-064a7a481e84",
+                          "name": "Subscription request created successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"requestReason\": \"<string>\",\n  \"subscribedListings\": [],\n  \"subscribedPrincipals\": []\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/subscription-requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "subscription-requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domainIdentifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"domainId\": \"<string>\",\n  \"status\": \"REJECTED\",\n  \"requestReason\": \"<string>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-43f9d105-17dd-4d4f-bcff-064a7a481e84"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-87586ed6-6b87-4c59-b29e-215e4ddf68dd"
+                    }
+                  ],
+                  "id": "0c163971-8b2a-4cf5-948b-2a303e58600a",
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-0c163971-8b2a-4cf5-948b-2a303e58600a"
+                },
+                {
+                  "name": "listings",
+                  "item": [
+                    {
+                      "name": "Search Listings",
+                      "id": "816389f9-0f8a-4fb2-8ba1-a4b29f449da1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/listings?additionalAttributes=<string>&additionalAttributes=<string>&maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier",
+                            "listings"
+                          ],
+                          "query": [
+                            {
+                              "key": "additionalAttributes",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "additionalAttributes",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "f929575f-0093-4f6b-8a39-ae191d70dc96",
+                              "key": "domainIdentifier",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Searches for asset listings in the DataZone catalog."
+                      },
+                      "response": [
+                        {
+                          "id": "d794b2b2-2209-402d-bade-02ae53d25e90",
+                          "name": "Listings search results returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/listings?additionalAttributes=<string>&maxResults=<integer>&nextToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "listings"
+                              ],
+                              "query": [
+                                {
+                                  "key": "additionalAttributes",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domainIdentifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"nextToken\": \"<string>\",\n  \"totalMatchCount\": \"<integer>\"\n}",
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-d794b2b2-2209-402d-bade-02ae53d25e90"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-816389f9-0f8a-4fb2-8ba1-a4b29f449da1"
+                    }
+                  ],
+                  "id": "80d54b04-5ed3-430e-b4f5-8f57669cb8d3",
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-80d54b04-5ed3-430e-b4f5-8f57669cb8d3"
+                },
+                {
+                  "name": "environments",
+                  "item": [
+                    {
+                      "name": "List Environments",
+                      "id": "8c4e8037-2230-464a-9ca1-b79534f490f7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/environments?projectIdentifier=<string>&maxResults=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier",
+                            "environments"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "projectIdentifier",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "a7b039b2-38d8-4e13-a1bd-df01476b57ed",
+                              "key": "domainIdentifier",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Lists environments in a DataZone domain."
+                      },
+                      "response": [
+                        {
+                          "id": "c945bfac-9fb2-4af9-ab1b-78f477537221",
+                          "name": "List of environments returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/environments?projectIdentifier=<string>&maxResults=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "environments"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "projectIdentifier",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domainIdentifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"domainId\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"status\": \"DELETE_FAILED\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"domainId\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"status\": \"DELETE_FAILED\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-c945bfac-9fb2-4af9-ab1b-78f477537221"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-8c4e8037-2230-464a-9ca1-b79534f490f7"
+                    },
+                    {
+                      "name": "Create Environment",
+                      "id": "0b40daa5-d311-4a85-ada8-d28324bc1630",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"domainIdentifier\": \"<string>\",\n  \"projectIdentifier\": \"<string>\",\n  \"environmentProfileIdentifier\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/environments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier",
+                            "environments"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1702b1f9-0d98-4143-b48f-3c77f4bf21f5",
+                              "key": "domainIdentifier",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Creates an environment in a DataZone project for data access and analytics."
+                      },
+                      "response": [
+                        {
+                          "id": "44082b25-d85f-4026-a74b-367144c87af1",
+                          "name": "Environment created successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"domainIdentifier\": \"<string>\",\n  \"projectIdentifier\": \"<string>\",\n  \"environmentProfileIdentifier\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/domains/:domainIdentifier/environments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "domains",
+                                ":domainIdentifier",
+                                "environments"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domainIdentifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"domainId\": \"<string>\",\n  \"projectId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"UPDATE_FAILED\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:02:58.000Z",
+                          "updatedAt": "2026-06-05T15:02:58.000Z",
+                          "uid": "35240-44082b25-d85f-4026-a74b-367144c87af1"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-0b40daa5-d311-4a85-ada8-d28324bc1630"
+                    }
+                  ],
+                  "id": "e634f2b6-a737-4d41-a5bc-4677df555f60",
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-e634f2b6-a737-4d41-a5bc-4677df555f60"
+                },
+                {
+                  "name": "Get Domain",
+                  "id": "05cf4b5e-ba82-4b86-b6d8-d4ad00612511",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/domains/:domainIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "domains",
+                        ":domainIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9b93b11b-c48b-45d5-a214-64fdcd97cd36",
+                          "key": "domainIdentifier",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Gets the details of a DataZone domain."
+                  },
+                  "response": [
+                    {
+                      "id": "ffedd622-7d49-480d-9edc-082b6f092383",
+                      "name": "Domain details returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "domainIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"arn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"CREATING\",\n  \"portalUrl\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-ffedd622-7d49-480d-9edc-082b6f092383"
+                    },
+                    {
+                      "id": "487f0d67-2659-4685-a01f-15722d1a1dcf",
+                      "name": "Domain not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "domainIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-487f0d67-2659-4685-a01f-15722d1a1dcf"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-05cf4b5e-ba82-4b86-b6d8-d4ad00612511"
+                },
+                {
+                  "name": "Update Domain",
+                  "id": "49874289-969a-4d56-b22a-2d917ce43e9b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/domains/:domainIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "domains",
+                        ":domainIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f7b72027-39fe-43ce-bc56-d6400abd82ad",
+                          "key": "domainIdentifier",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Updates a DataZone domain."
+                  },
+                  "response": [
+                    {
+                      "id": "c74cf8ab-9fad-4982-9623-17a7aaea2384",
+                      "name": "Domain updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "domainIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"arn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"CREATING\",\n  \"portalUrl\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-c74cf8ab-9fad-4982-9623-17a7aaea2384"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-49874289-969a-4d56-b22a-2d917ce43e9b"
+                },
+                {
+                  "name": "Delete Domain",
+                  "id": "cd58634c-8960-42b1-b02c-60777ba7ce84",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/domains/:domainIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "domains",
+                        ":domainIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0fbd5387-a368-42da-ac7d-c39c6ab84bbe",
+                          "key": "domainIdentifier",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Deletes a DataZone domain."
+                  },
+                  "response": [
+                    {
+                      "id": "4ee6dcf1-f95d-4495-a01f-7e7aa3fc70aa",
+                      "name": "Domain deletion initiated",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/domains/:domainIdentifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "domains",
+                            ":domainIdentifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "domainIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:02:58.000Z",
+                      "updatedAt": "2026-06-05T15:02:58.000Z",
+                      "uid": "35240-4ee6dcf1-f95d-4495-a01f-7e7aa3fc70aa"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-cd58634c-8960-42b1-b02c-60777ba7ce84"
+                }
+              ],
+              "id": "9bf287ec-2fe9-42c1-ab09-588b28507dcc",
+              "createdAt": "2026-06-05T15:02:58.000Z",
+              "updatedAt": "2026-06-05T15:02:58.000Z",
+              "uid": "35240-9bf287ec-2fe9-42c1-ab09-588b28507dcc"
+            },
+            {
+              "name": "List Domains",
+              "id": "5af1ed66-7302-4fe7-95f7-8fc0e13464e3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/domains?status=DELETING&maxResults=<integer>&nextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "domains"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "DELETING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Lists all Amazon DataZone domains in the account."
+              },
+              "response": [
+                {
+                  "id": "8757e47b-94d0-420d-896e-f2fb75578a21",
+                  "name": "List of domains returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/domains?status=DELETING&maxResults=<integer>&nextToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "domains"
+                      ],
+                      "query": [
+                        {
+                          "key": "status",
+                          "value": "DELETING"
+                        },
+                        {
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "nextToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"status\": \"DELETING\",\n      \"portalUrl\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"status\": \"DELETING\",\n      \"portalUrl\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-8757e47b-94d0-420d-896e-f2fb75578a21"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:58.000Z",
+              "updatedAt": "2026-06-05T15:02:58.000Z",
+              "uid": "35240-5af1ed66-7302-4fe7-95f7-8fc0e13464e3"
+            },
+            {
+              "name": "Create Domain",
+              "id": "9df0034a-dfb1-441f-88fd-4b9983ea222b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"domainExecutionRole\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": {\n    \"officiaa\": \"<string>\",\n    \"dolorb54\": \"<string>\",\n    \"none\": \"<string>\",\n    \"Duis_fdb\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/domains",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "domains"
+                  ]
+                },
+                "description": "Creates a DataZone domain. A domain contains a data catalog for data sharing and governance."
+              },
+              "response": [
+                {
+                  "id": "f1608b6a-3061-4134-bdb0-f036d00f0469",
+                  "name": "Domain created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"domainExecutionRole\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": {\n    \"officiaa\": \"<string>\",\n    \"dolorb54\": \"<string>\",\n    \"none\": \"<string>\",\n    \"Duis_fdb\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "domains"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"arn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"CREATING\",\n  \"portalUrl\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:02:58.000Z",
+                  "updatedAt": "2026-06-05T15:02:58.000Z",
+                  "uid": "35240-f1608b6a-3061-4134-bdb0-f036d00f0469"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:58.000Z",
+              "updatedAt": "2026-06-05T15:02:58.000Z",
+              "uid": "35240-9df0034a-dfb1-441f-88fd-4b9983ea222b"
+            }
+          ],
+          "id": "efc586ce-3512-4349-908a-dc0841eb3342",
+          "createdAt": "2026-06-05T15:02:58.000Z",
+          "updatedAt": "2026-06-05T15:02:58.000Z",
+          "uid": "35240-efc586ce-3512-4349-908a-dc0841eb3342"
+        }
+      ],
+      "id": "b8bb9d32-537a-4225-ac3e-2c703e3ebcab",
+      "createdAt": "2026-06-05T15:02:58.000Z",
+      "updatedAt": "2026-06-05T15:02:58.000Z",
+      "uid": "35240-b8bb9d32-537a-4225-ac3e-2c703e3ebcab"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datazone.amazonaws.com"
+    }
+  ]
+}
