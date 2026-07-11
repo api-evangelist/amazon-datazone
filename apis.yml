@@ -58,6 +58,14 @@ apis:
       - type: JSONLD
         url: json-ld/amazon-datazone-context.jsonld
 common:
+  - type: TrustCenter
+    url: security/amazon-datazone-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-datazone-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-datazone-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-datazone-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-datazone/overview
   - type: Arazzo
