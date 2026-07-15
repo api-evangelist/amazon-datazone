@@ -58,6 +58,8 @@ apis:
       - type: JSONLD
         url: json-ld/amazon-datazone-context.jsonld
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-datazone-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-datazone-trust-center.yml
   - type: VulnerabilityDisclosure
