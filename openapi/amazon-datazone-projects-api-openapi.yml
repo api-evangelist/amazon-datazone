@@ -1,0 +1,270 @@
+openapi: 3.1.0
+info:
+  title: Amazon DataZone Assets Projects API
+  description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
+  version: 2018-05-10
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+servers:
+- url: https://datazone.amazonaws.com
+  description: Amazon DataZone API
+security:
+- awsSignatureV4: []
+tags:
+- name: Projects
+  description: Operations for managing projects within a domain
+paths:
+  /v2/domains/{domainIdentifier}/projects:
+    get:
+      operationId: listProjects
+      summary: List Projects
+      description: Lists projects within a DataZone domain.
+      tags:
+      - Projects
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of projects returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProjectsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                    - id: prj_abc123
+                      domainId: dzd_1234567890abcde
+                      name: SalesAnalyticsProject
+                      description: Sales data analytics project
+                      createdAt: '2024-02-01T10:00:00Z'
+    post:
+      operationId: createProject
+      summary: Create Project
+      description: Creates a project in a DataZone domain. Projects are containers for data assets and environments.
+      tags:
+      - Projects
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  name: SalesAnalyticsProject
+                  description: Project for sales data analytics team
+      responses:
+        '201':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: prj_abc123
+                    domainId: dzd_1234567890abcde
+                    name: SalesAnalyticsProject
+                    description: Project for sales data analytics team
+                    createdAt: '2024-04-15T11:00:00Z'
+  /v2/domains/{domainIdentifier}/projects/{identifier}:
+    get:
+      operationId: getProject
+      summary: Get Project
+      description: Gets the details of a DataZone project.
+      tags:
+      - Projects
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Project details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: prj_abc123
+                    domainId: dzd_1234567890abcde
+                    name: SalesAnalyticsProject
+                    description: Sales data analytics project
+                    createdAt: '2024-02-01T10:00:00Z'
+        '404':
+          description: Project not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateProject
+      summary: Update Project
+      description: Updates a DataZone project.
+      tags:
+      - Projects
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  description: Updated sales analytics project description
+      responses:
+        '200':
+          description: Project updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: prj_abc123
+                    name: SalesAnalyticsProject
+    delete:
+      operationId: deleteProject
+      summary: Delete Project
+      description: Deletes a DataZone project.
+      tags:
+      - Projects
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Project deleted successfully
+        '404':
+          description: Project not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ListProjectsResponse:
+      description: Response containing a list of projects.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        nextToken:
+          type: string
+    CreateProjectRequest:
+      description: Request body for creating a DataZone project.
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    Project:
+      description: A DataZone project that serves as a container for data assets and environments.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the project
+        domainId:
+          type: string
+          description: The ID of the domain this project belongs to
+        name:
+          type: string
+          description: The name of the project
+        description:
+          type: string
+          description: The description of the project
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Error:
+      description: Standard error response from the DataZone API.
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifying the type of error
+    UpdateProjectRequest:
+      description: Request body for updating a DataZone project.
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication

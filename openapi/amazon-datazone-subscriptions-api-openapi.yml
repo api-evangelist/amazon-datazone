@@ -1,0 +1,215 @@
+openapi: 3.1.0
+info:
+  title: Amazon DataZone Assets Subscriptions API
+  description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
+  version: 2018-05-10
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+servers:
+- url: https://datazone.amazonaws.com
+  description: Amazon DataZone API
+security:
+- awsSignatureV4: []
+tags:
+- name: Subscriptions
+  description: Operations for managing data subscriptions
+paths:
+  /v2/domains/{domainIdentifier}/subscriptions:
+    get:
+      operationId: listSubscriptions
+      summary: List Subscriptions
+      description: Lists subscriptions in a DataZone domain.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - APPROVED
+          - CANCELLED
+          - REVOKED
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of subscriptions returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                    - id: sub_001abc
+                      domainId: dzd_1234567890abcde
+                      status: APPROVED
+                      createdAt: '2024-03-01T10:00:00Z'
+  /v2/domains/{domainIdentifier}/subscription-requests:
+    get:
+      operationId: listSubscriptionRequests
+      summary: List Subscription Requests
+      description: Lists subscription requests in a DataZone domain.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - PENDING
+          - ACCEPTED
+          - REJECTED
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of subscription requests returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionRequestsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                    - id: subreq_001
+                      domainId: dzd_1234567890abcde
+                      status: PENDING
+                      requestReason: Need access for Q2 analytics
+                      createdAt: '2024-04-10T09:00:00Z'
+    post:
+      operationId: createSubscriptionRequest
+      summary: Create Subscription Request
+      description: Creates a request to subscribe to a data asset listing.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSubscriptionRequestRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  requestReason: Need access to sales data for Q2 analytics project
+                  subscribedListings:
+                  - identifier: listing_001abc
+                  subscribedPrincipals:
+                  - project:
+                      identifier: prj_abc123
+      responses:
+        '201':
+          description: Subscription request created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionRequest'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: subreq_002
+                    domainId: dzd_1234567890abcde
+                    status: PENDING
+                    requestReason: Need access for Q2 analytics
+                    createdAt: '2024-04-15T13:00:00Z'
+components:
+  schemas:
+    CreateSubscriptionRequestRequest:
+      description: Request body for creating a subscription request.
+      type: object
+      required:
+      - requestReason
+      - subscribedListings
+      - subscribedPrincipals
+      properties:
+        requestReason:
+          type: string
+        subscribedListings:
+          type: array
+          items:
+            type: object
+        subscribedPrincipals:
+          type: array
+          items:
+            type: object
+    ListSubscriptionRequestsResponse:
+      description: Response containing a list of subscription requests.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionRequest'
+        nextToken:
+          type: string
+    ListSubscriptionsResponse:
+      description: Response containing a list of subscriptions.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+        nextToken:
+          type: string
+    SubscriptionRequest:
+      description: A request to subscribe to a data asset listing in DataZone.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the subscription request
+        domainId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - ACCEPTED
+          - REJECTED
+        requestReason:
+          type: string
+          description: The reason for the subscription request
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication

@@ -1,0 +1,81 @@
+openapi: 3.1.0
+info:
+  title: Amazon DataZone Assets Listings API
+  description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
+  version: 2018-05-10
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+servers:
+- url: https://datazone.amazonaws.com
+  description: Amazon DataZone API
+security:
+- awsSignatureV4: []
+tags:
+- name: Listings
+  description: Operations for managing asset listings in the catalog
+paths:
+  /v2/domains/{domainIdentifier}/listings:
+    get:
+      operationId: searchListings
+      summary: Search Listings
+      description: Searches for asset listings in the DataZone catalog.
+      tags:
+      - Listings
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: additionalAttributes
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Listings search results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchListingsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                    - id: listing_001abc
+                      name: SalesOrdersTable
+                      description: Daily sales orders table
+                      domainId: dzd_1234567890abcde
+                    nextToken: null
+components:
+  schemas:
+    SearchListingsResponse:
+      description: Response containing catalog listing search results.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+        nextToken:
+          type: string
+        totalMatchCount:
+          type: integer
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication

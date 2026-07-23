@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: Amazon DataZone Assets Environments API
+  description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
+  version: 2018-05-10
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+servers:
+- url: https://datazone.amazonaws.com
+  description: Amazon DataZone API
+security:
+- awsSignatureV4: []
+tags:
+- name: Environments
+  description: Operations for managing data environments
+paths:
+  /v2/domains/{domainIdentifier}/environments:
+    get:
+      operationId: listEnvironments
+      summary: List Environments
+      description: Lists environments in a DataZone domain.
+      tags:
+      - Environments
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of environments returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEnvironmentsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                    - id: env_001abc
+                      domainId: dzd_1234567890abcde
+                      projectId: prj_abc123
+                      name: ProductionAnalyticsEnvironment
+                      status: ACTIVE
+                      createdAt: '2024-02-15T10:00:00Z'
+    post:
+      operationId: createEnvironment
+      summary: Create Environment
+      description: Creates an environment in a DataZone project for data access and analytics.
+      tags:
+      - Environments
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEnvironmentRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  name: ProductionAnalyticsEnvironment
+                  description: Production analytics environment with Athena and Glue access
+                  domainIdentifier: dzd_1234567890abcde
+                  projectIdentifier: prj_abc123
+                  environmentProfileIdentifier: envprofile_001
+      responses:
+        '201':
+          description: Environment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: env_002xyz
+                    domainId: dzd_1234567890abcde
+                    projectId: prj_abc123
+                    name: ProductionAnalyticsEnvironment
+                    status: CREATING
+                    createdAt: '2024-04-15T14:00:00Z'
+components:
+  schemas:
+    ListEnvironmentsResponse:
+      description: Response containing a list of environments.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+        nextToken:
+          type: string
+    Environment:
+      description: A DataZone environment that provides data access capabilities for a project.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the environment
+        domainId:
+          type: string
+        projectId:
+          type: string
+        name:
+          type: string
+          description: The name of the environment
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - CREATING
+          - UPDATING
+          - DELETING
+          - DELETED
+          - CREATE_FAILED
+          - DELETE_FAILED
+          - UPDATE_FAILED
+          - DISABLED
+          - EXPIRED
+          - INACCESSIBLE
+          - SUSPENDED
+        createdAt:
+          type: string
+          format: date-time
+    CreateEnvironmentRequest:
+      description: Request body for creating a DataZone environment.
+      type: object
+      required:
+      - name
+      - domainIdentifier
+      - projectIdentifier
+      - environmentProfileIdentifier
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        domainIdentifier:
+          type: string
+        projectIdentifier:
+          type: string
+        environmentProfileIdentifier:
+          type: string
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication

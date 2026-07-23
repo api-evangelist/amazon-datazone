@@ -1,0 +1,291 @@
+openapi: 3.1.0
+info:
+  title: Amazon DataZone Assets Domains API
+  description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
+  version: 2018-05-10
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+servers:
+- url: https://datazone.amazonaws.com
+  description: Amazon DataZone API
+security:
+- awsSignatureV4: []
+tags:
+- name: Domains
+  description: Operations for managing DataZone domains
+paths:
+  /v2/domains:
+    get:
+      operationId: listDomains
+      summary: List Domains
+      description: Lists all Amazon DataZone domains in the account.
+      tags:
+      - Domains
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - AVAILABLE
+          - CREATING
+          - CREATION_FAILED
+          - DELETED
+          - DELETING
+          - DELETION_FAILED
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of domains returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDomainsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                    - id: dzd_1234567890abcde
+                      arn: arn:aws:datazone:us-east-1:123456789012:domain/dzd_1234567890abcde
+                      name: EnterpriseDataDomain
+                      description: Enterprise data catalog domain
+                      status: AVAILABLE
+                      createdAt: '2024-01-15T10:00:00Z'
+    post:
+      operationId: createDomain
+      summary: Create Domain
+      description: Creates a DataZone domain. A domain contains a data catalog for data sharing and governance.
+      tags:
+      - Domains
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDomainRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  name: EnterpriseDataDomain
+                  description: Enterprise data catalog domain for analytics team
+                  domainExecutionRole: arn:aws:iam::123456789012:role/DataZoneDomainExecutionRole
+                  tags:
+                    Environment: Production
+      responses:
+        '201':
+          description: Domain created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: dzd_1234567890abcde
+                    arn: arn:aws:datazone:us-east-1:123456789012:domain/dzd_1234567890abcde
+                    name: EnterpriseDataDomain
+                    status: CREATING
+                    createdAt: '2024-04-15T10:00:00Z'
+  /v2/domains/{domainIdentifier}:
+    get:
+      operationId: getDomain
+      summary: Get Domain
+      description: Gets the details of a DataZone domain.
+      tags:
+      - Domains
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Domain details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: dzd_1234567890abcde
+                    arn: arn:aws:datazone:us-east-1:123456789012:domain/dzd_1234567890abcde
+                    name: EnterpriseDataDomain
+                    description: Enterprise data catalog domain
+                    status: AVAILABLE
+                    createdAt: '2024-01-15T10:00:00Z'
+        '404':
+          description: Domain not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      operationId: updateDomain
+      summary: Update Domain
+      description: Updates a DataZone domain.
+      tags:
+      - Domains
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDomainRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  description: Updated enterprise data catalog domain
+      responses:
+        '200':
+          description: Domain updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: dzd_1234567890abcde
+                    name: EnterpriseDataDomain
+                    status: AVAILABLE
+    delete:
+      operationId: deleteDomain
+      summary: Delete Domain
+      description: Deletes a DataZone domain.
+      tags:
+      - Domains
+      parameters:
+      - name: domainIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Domain deletion initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteDomainResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    status: DELETING
+components:
+  schemas:
+    CreateDomainRequest:
+      description: Request body for creating a DataZone domain.
+      type: object
+      required:
+      - name
+      - domainExecutionRole
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        domainExecutionRole:
+          type: string
+          description: The ARN of the IAM role for DataZone to use when executing domain operations
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    Domain:
+      description: A DataZone domain that serves as the organizational boundary for data catalog and governance.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the domain
+        arn:
+          type: string
+          description: The ARN of the DataZone domain. This ARN uniquely identifies the domain.
+        name:
+          type: string
+          description: The name of the domain
+        description:
+          type: string
+          description: The description of the domain
+        status:
+          type: string
+          description: The current status of the domain
+          enum:
+          - AVAILABLE
+          - CREATING
+          - CREATION_FAILED
+          - DELETED
+          - DELETING
+          - DELETION_FAILED
+        portalUrl:
+          type: string
+          description: The URL of the DataZone portal for this domain
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    UpdateDomainRequest:
+      description: Request body for updating a DataZone domain.
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    ListDomainsResponse:
+      description: Response containing a list of DataZone domains.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+        nextToken:
+          type: string
+    Error:
+      description: Standard error response from the DataZone API.
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifying the type of error
+    DeleteDomainResponse:
+      description: Response after initiating domain deletion.
+      type: object
+      properties:
+        status:
+          type: string
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
