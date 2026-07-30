@@ -7,7 +7,20 @@ description: >-
   DataZone provides domain-based governance, project workspaces, subscription-based access control, and integration with
   AWS analytics services.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-datazone.png
 tags:
   - AWS
   - Data Catalog
@@ -20,43 +33,174 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: amazon-datazone:amazon-datazone-api
-    name: Amazon DataZone API
-    description: >-
-      The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data
-      catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
-      Supports domain-based governance, asset cataloging, subscription workflows, and environment provisioning for data
-      analytics access.
-    humanURL: https://aws.amazon.com/datazone/
-    baseURL: https://datazone.amazonaws.com
-    tags:
-      - Data Catalog
-      - Data Governance
-      - Data Sharing
-      - Analytics
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/datazone/latest/APIReference/Welcome.html
-      - type: OpenAPI
-        url: openapi/amazon-datazone-openapi.yml
-      - type: OpenAPI
-        url: https://api.apis.guru/v2/specs/amazonaws.com/datazone/2018-05-10/openapi.yaml
-      - type: GettingStarted
-        url: https://aws.amazon.com/datazone/getting-started/
-      - type: Pricing
-        url: https://aws.amazon.com/datazone/pricing/
-      - type: FAQ
-        url: https://aws.amazon.com/datazone/faqs/
-      - type: APIReference
-        url: https://docs.aws.amazon.com/datazone/latest/APIReference/
-      - type: JSONSchema
-        url: json-schema/domain-schema.json
-      - type: JSONSchema
-        url: json-schema/project-schema.json
-      - type: JSONSchema
-        url: json-schema/asset-schema.json
-      - type: JSONLD
-        url: json-ld/amazon-datazone-context.jsonld
+- aid: amazon-datazone:amazon-datazone-assets-api
+  name: Amazon DataZone Assets API
+  description: Operations for managing data assets in the catalog
+  humanURL: https://aws.amazon.com/datazone/
+  baseURL: https://datazone.amazonaws.com
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-datazone-assets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/datazone/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/datazone/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/datazone/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/
+  - type: JSONSchema
+    url: json-schema/domain-schema.json
+  - type: JSONSchema
+    url: json-schema/project-schema.json
+  - type: JSONSchema
+    url: json-schema/asset-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-datazone-context.jsonld
+- aid: amazon-datazone:amazon-datazone-domains-api
+  name: Amazon DataZone Domains API
+  description: Operations for managing DataZone domains
+  humanURL: https://aws.amazon.com/datazone/
+  baseURL: https://datazone.amazonaws.com
+  tags:
+  - Domains
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-datazone-domains-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/datazone/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/datazone/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/datazone/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/
+  - type: JSONSchema
+    url: json-schema/domain-schema.json
+  - type: JSONSchema
+    url: json-schema/project-schema.json
+  - type: JSONSchema
+    url: json-schema/asset-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-datazone-context.jsonld
+- aid: amazon-datazone:amazon-datazone-environments-api
+  name: Amazon DataZone Environments API
+  description: Operations for managing data environments
+  humanURL: https://aws.amazon.com/datazone/
+  baseURL: https://datazone.amazonaws.com
+  tags:
+  - Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-datazone-environments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/datazone/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/datazone/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/datazone/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/
+  - type: JSONSchema
+    url: json-schema/domain-schema.json
+  - type: JSONSchema
+    url: json-schema/project-schema.json
+  - type: JSONSchema
+    url: json-schema/asset-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-datazone-context.jsonld
+- aid: amazon-datazone:amazon-datazone-listings-api
+  name: Amazon DataZone Listings API
+  description: Operations for managing asset listings in the catalog
+  humanURL: https://aws.amazon.com/datazone/
+  baseURL: https://datazone.amazonaws.com
+  tags:
+  - Listings
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-datazone-listings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/datazone/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/datazone/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/datazone/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/
+  - type: JSONSchema
+    url: json-schema/domain-schema.json
+  - type: JSONSchema
+    url: json-schema/project-schema.json
+  - type: JSONSchema
+    url: json-schema/asset-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-datazone-context.jsonld
+- aid: amazon-datazone:amazon-datazone-projects-api
+  name: Amazon DataZone Projects API
+  description: Operations for managing projects within a domain
+  humanURL: https://aws.amazon.com/datazone/
+  baseURL: https://datazone.amazonaws.com
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-datazone-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/datazone/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/datazone/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/datazone/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/
+  - type: JSONSchema
+    url: json-schema/domain-schema.json
+  - type: JSONSchema
+    url: json-schema/project-schema.json
+  - type: JSONSchema
+    url: json-schema/asset-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-datazone-context.jsonld
+- aid: amazon-datazone:amazon-datazone-subscriptions-api
+  name: Amazon DataZone Subscriptions API
+  description: Operations for managing data subscriptions
+  humanURL: https://aws.amazon.com/datazone/
+  baseURL: https://datazone.amazonaws.com
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-datazone-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/datazone/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/datazone/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/datazone/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/datazone/latest/APIReference/
+  - type: JSONSchema
+    url: json-schema/domain-schema.json
+  - type: JSONSchema
+    url: json-schema/project-schema.json
+  - type: JSONSchema
+    url: json-schema/asset-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-datazone-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-datazone-agentic-access.yml
