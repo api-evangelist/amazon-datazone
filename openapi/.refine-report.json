@@ -1,0 +1,24 @@
+{
+  "provider": "amazon-datazone",
+  "sources": [
+    "amazon-datazone-assets-api-openapi.yml",
+    "amazon-datazone-domains-api-openapi.yml",
+    "amazon-datazone-environments-api-openapi.yml",
+    "amazon-datazone-listings-api-openapi.yml",
+    "amazon-datazone-projects-api-openapi.yml",
+    "amazon-datazone-subscriptions-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-datazone-assets-api-openapi.yml",
+    "amazon-datazone-domains-api-openapi.yml",
+    "amazon-datazone-environments-api-openapi.yml",
+    "amazon-datazone-listings-api-openapi.yml",
+    "amazon-datazone-projects-api-openapi.yml",
+    "amazon-datazone-subscriptions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

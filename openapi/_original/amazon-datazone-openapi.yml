@@ -1,0 +1,1079 @@
+openapi: 3.1.0
+info:
+  title: Amazon DataZone API
+  description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
+  version: 2018-05-10
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+
+servers:
+  - url: https://datazone.amazonaws.com
+    description: Amazon DataZone API
+
+tags:
+  - name: Domains
+    description: Operations for managing DataZone domains
+  - name: Projects
+    description: Operations for managing projects within a domain
+  - name: Assets
+    description: Operations for managing data assets in the catalog
+  - name: Subscriptions
+    description: Operations for managing data subscriptions
+  - name: Listings
+    description: Operations for managing asset listings in the catalog
+  - name: Environments
+    description: Operations for managing data environments
+
+security:
+  - awsSignatureV4: []
+
+paths:
+  /v2/domains:
+    get:
+      operationId: listDomains
+      summary: List Domains
+      description: Lists all Amazon DataZone domains in the account.
+      tags:
+        - Domains
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [AVAILABLE, CREATING, CREATION_FAILED, DELETED, DELETING, DELETION_FAILED]
+        - name: maxResults
+          in: query
+          schema:
+            type: integer
+        - name: nextToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of domains returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDomainsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                      - id: dzd_1234567890abcde
+                        arn: arn:aws:datazone:us-east-1:123456789012:domain/dzd_1234567890abcde
+                        name: EnterpriseDataDomain
+                        description: Enterprise data catalog domain
+                        status: AVAILABLE
+                        createdAt: '2024-01-15T10:00:00Z'
+    post:
+      operationId: createDomain
+      summary: Create Domain
+      description: Creates a DataZone domain. A domain contains a data catalog for data sharing and governance.
+      tags:
+        - Domains
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDomainRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  name: EnterpriseDataDomain
+                  description: Enterprise data catalog domain for analytics team
+                  domainExecutionRole: arn:aws:iam::123456789012:role/DataZoneDomainExecutionRole
+                  tags:
+                    Environment: Production
+      responses:
+        '201':
+          description: Domain created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: dzd_1234567890abcde
+                    arn: arn:aws:datazone:us-east-1:123456789012:domain/dzd_1234567890abcde
+                    name: EnterpriseDataDomain
+                    status: CREATING
+                    createdAt: '2024-04-15T10:00:00Z'
+
+  /v2/domains/{domainIdentifier}:
+    get:
+      operationId: getDomain
+      summary: Get Domain
+      description: Gets the details of a DataZone domain.
+      tags:
+        - Domains
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Domain details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: dzd_1234567890abcde
+                    arn: arn:aws:datazone:us-east-1:123456789012:domain/dzd_1234567890abcde
+                    name: EnterpriseDataDomain
+                    description: Enterprise data catalog domain
+                    status: AVAILABLE
+                    createdAt: '2024-01-15T10:00:00Z'
+        '404':
+          description: Domain not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      operationId: updateDomain
+      summary: Update Domain
+      description: Updates a DataZone domain.
+      tags:
+        - Domains
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDomainRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  description: Updated enterprise data catalog domain
+      responses:
+        '200':
+          description: Domain updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: dzd_1234567890abcde
+                    name: EnterpriseDataDomain
+                    status: AVAILABLE
+    delete:
+      operationId: deleteDomain
+      summary: Delete Domain
+      description: Deletes a DataZone domain.
+      tags:
+        - Domains
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Domain deletion initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteDomainResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    status: DELETING
+
+  /v2/domains/{domainIdentifier}/projects:
+    get:
+      operationId: listProjects
+      summary: List Projects
+      description: Lists projects within a DataZone domain.
+      tags:
+        - Projects
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          schema:
+            type: integer
+        - name: nextToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of projects returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProjectsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                      - id: prj_abc123
+                        domainId: dzd_1234567890abcde
+                        name: SalesAnalyticsProject
+                        description: Sales data analytics project
+                        createdAt: '2024-02-01T10:00:00Z'
+    post:
+      operationId: createProject
+      summary: Create Project
+      description: Creates a project in a DataZone domain. Projects are containers for data assets and environments.
+      tags:
+        - Projects
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  name: SalesAnalyticsProject
+                  description: Project for sales data analytics team
+      responses:
+        '201':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: prj_abc123
+                    domainId: dzd_1234567890abcde
+                    name: SalesAnalyticsProject
+                    description: Project for sales data analytics team
+                    createdAt: '2024-04-15T11:00:00Z'
+
+  /v2/domains/{domainIdentifier}/projects/{identifier}:
+    get:
+      operationId: getProject
+      summary: Get Project
+      description: Gets the details of a DataZone project.
+      tags:
+        - Projects
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Project details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: prj_abc123
+                    domainId: dzd_1234567890abcde
+                    name: SalesAnalyticsProject
+                    description: Sales data analytics project
+                    createdAt: '2024-02-01T10:00:00Z'
+        '404':
+          description: Project not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateProject
+      summary: Update Project
+      description: Updates a DataZone project.
+      tags:
+        - Projects
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  description: Updated sales analytics project description
+      responses:
+        '200':
+          description: Project updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: prj_abc123
+                    name: SalesAnalyticsProject
+    delete:
+      operationId: deleteProject
+      summary: Delete Project
+      description: Deletes a DataZone project.
+      tags:
+        - Projects
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Project deleted successfully
+        '404':
+          description: Project not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /v2/domains/{domainIdentifier}/assets:
+    post:
+      operationId: createAsset
+      summary: Create Asset
+      description: Creates a data asset in the DataZone catalog.
+      tags:
+        - Assets
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAssetRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  name: SalesOrdersTable
+                  description: Daily sales orders from production database
+                  domainIdentifier: dzd_1234567890abcde
+                  owningProjectIdentifier: prj_abc123
+                  typeIdentifier: amazon.datazone.RelationalTable
+      responses:
+        '201':
+          description: Asset created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: asset_001abc
+                    name: SalesOrdersTable
+                    description: Daily sales orders from production database
+                    domainId: dzd_1234567890abcde
+                    owningProjectId: prj_abc123
+                    createdAt: '2024-04-15T12:00:00Z'
+
+  /v2/domains/{domainIdentifier}/assets/{identifier}:
+    get:
+      operationId: getAsset
+      summary: Get Asset
+      description: Gets the details of a data asset in the DataZone catalog.
+      tags:
+        - Assets
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Asset details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: asset_001abc
+                    name: SalesOrdersTable
+                    description: Daily sales orders from production database
+                    domainId: dzd_1234567890abcde
+        '404':
+          description: Asset not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      operationId: deleteAsset
+      summary: Delete Asset
+      description: Deletes a data asset from the DataZone catalog.
+      tags:
+        - Assets
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Asset deleted successfully
+
+  /v2/domains/{domainIdentifier}/subscriptions:
+    get:
+      operationId: listSubscriptions
+      summary: List Subscriptions
+      description: Lists subscriptions in a DataZone domain.
+      tags:
+        - Subscriptions
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [APPROVED, CANCELLED, REVOKED]
+        - name: maxResults
+          in: query
+          schema:
+            type: integer
+        - name: nextToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of subscriptions returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                      - id: sub_001abc
+                        domainId: dzd_1234567890abcde
+                        status: APPROVED
+                        createdAt: '2024-03-01T10:00:00Z'
+
+  /v2/domains/{domainIdentifier}/subscription-requests:
+    get:
+      operationId: listSubscriptionRequests
+      summary: List Subscription Requests
+      description: Lists subscription requests in a DataZone domain.
+      tags:
+        - Subscriptions
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [PENDING, ACCEPTED, REJECTED]
+        - name: maxResults
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of subscription requests returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionRequestsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                      - id: subreq_001
+                        domainId: dzd_1234567890abcde
+                        status: PENDING
+                        requestReason: Need access for Q2 analytics
+                        createdAt: '2024-04-10T09:00:00Z'
+    post:
+      operationId: createSubscriptionRequest
+      summary: Create Subscription Request
+      description: Creates a request to subscribe to a data asset listing.
+      tags:
+        - Subscriptions
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSubscriptionRequestRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  requestReason: Need access to sales data for Q2 analytics project
+                  subscribedListings:
+                    - identifier: listing_001abc
+                  subscribedPrincipals:
+                    - project:
+                        identifier: prj_abc123
+      responses:
+        '201':
+          description: Subscription request created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionRequest'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: subreq_002
+                    domainId: dzd_1234567890abcde
+                    status: PENDING
+                    requestReason: Need access for Q2 analytics
+                    createdAt: '2024-04-15T13:00:00Z'
+
+  /v2/domains/{domainIdentifier}/listings:
+    get:
+      operationId: searchListings
+      summary: Search Listings
+      description: Searches for asset listings in the DataZone catalog.
+      tags:
+        - Listings
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: additionalAttributes
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+        - name: maxResults
+          in: query
+          schema:
+            type: integer
+        - name: nextToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Listings search results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchListingsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                      - id: listing_001abc
+                        name: SalesOrdersTable
+                        description: Daily sales orders table
+                        domainId: dzd_1234567890abcde
+                    nextToken: null
+
+  /v2/domains/{domainIdentifier}/environments:
+    get:
+      operationId: listEnvironments
+      summary: List Environments
+      description: Lists environments in a DataZone domain.
+      tags:
+        - Environments
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: projectIdentifier
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of environments returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEnvironmentsResponse'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    items:
+                      - id: env_001abc
+                        domainId: dzd_1234567890abcde
+                        projectId: prj_abc123
+                        name: ProductionAnalyticsEnvironment
+                        status: ACTIVE
+                        createdAt: '2024-02-15T10:00:00Z'
+    post:
+      operationId: createEnvironment
+      summary: Create Environment
+      description: Creates an environment in a DataZone project for data access and analytics.
+      tags:
+        - Environments
+      parameters:
+        - name: domainIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEnvironmentRequest'
+            examples:
+              default:
+                x-microcks-default: true
+                value:
+                  name: ProductionAnalyticsEnvironment
+                  description: Production analytics environment with Athena and Glue access
+                  domainIdentifier: dzd_1234567890abcde
+                  projectIdentifier: prj_abc123
+                  environmentProfileIdentifier: envprofile_001
+      responses:
+        '201':
+          description: Environment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    id: env_002xyz
+                    domainId: dzd_1234567890abcde
+                    projectId: prj_abc123
+                    name: ProductionAnalyticsEnvironment
+                    status: CREATING
+                    createdAt: '2024-04-15T14:00:00Z'
+
+components:
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+
+  schemas:
+    Domain:
+      description: A DataZone domain that serves as the organizational boundary for data catalog and governance.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the domain
+        arn:
+          type: string
+          description: The ARN of the DataZone domain. This ARN uniquely identifies the domain.
+        name:
+          type: string
+          description: The name of the domain
+        description:
+          type: string
+          description: The description of the domain
+        status:
+          type: string
+          description: The current status of the domain
+          enum: [AVAILABLE, CREATING, CREATION_FAILED, DELETED, DELETING, DELETION_FAILED]
+        portalUrl:
+          type: string
+          description: The URL of the DataZone portal for this domain
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    CreateDomainRequest:
+      description: Request body for creating a DataZone domain.
+      type: object
+      required:
+        - name
+        - domainExecutionRole
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        domainExecutionRole:
+          type: string
+          description: The ARN of the IAM role for DataZone to use when executing domain operations
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+
+    UpdateDomainRequest:
+      description: Request body for updating a DataZone domain.
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+
+    DeleteDomainResponse:
+      description: Response after initiating domain deletion.
+      type: object
+      properties:
+        status:
+          type: string
+
+    ListDomainsResponse:
+      description: Response containing a list of DataZone domains.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+        nextToken:
+          type: string
+
+    Project:
+      description: A DataZone project that serves as a container for data assets and environments.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the project
+        domainId:
+          type: string
+          description: The ID of the domain this project belongs to
+        name:
+          type: string
+          description: The name of the project
+        description:
+          type: string
+          description: The description of the project
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    CreateProjectRequest:
+      description: Request body for creating a DataZone project.
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+
+    UpdateProjectRequest:
+      description: Request body for updating a DataZone project.
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+
+    ListProjectsResponse:
+      description: Response containing a list of projects.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        nextToken:
+          type: string
+
+    Asset:
+      description: A data asset cataloged in the DataZone data catalog.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the asset
+        name:
+          type: string
+          description: The name of the data asset
+        description:
+          type: string
+          description: The description of the data asset
+        domainId:
+          type: string
+        owningProjectId:
+          type: string
+        typeIdentifier:
+          type: string
+          description: The type of the asset
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    CreateAssetRequest:
+      description: Request body for creating a data asset.
+      type: object
+      required:
+        - name
+        - domainIdentifier
+        - owningProjectIdentifier
+        - typeIdentifier
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        domainIdentifier:
+          type: string
+        owningProjectIdentifier:
+          type: string
+        typeIdentifier:
+          type: string
+
+    SubscriptionRequest:
+      description: A request to subscribe to a data asset listing in DataZone.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the subscription request
+        domainId:
+          type: string
+        status:
+          type: string
+          enum: [PENDING, ACCEPTED, REJECTED]
+        requestReason:
+          type: string
+          description: The reason for the subscription request
+        createdAt:
+          type: string
+          format: date-time
+
+    CreateSubscriptionRequestRequest:
+      description: Request body for creating a subscription request.
+      type: object
+      required:
+        - requestReason
+        - subscribedListings
+        - subscribedPrincipals
+      properties:
+        requestReason:
+          type: string
+        subscribedListings:
+          type: array
+          items:
+            type: object
+        subscribedPrincipals:
+          type: array
+          items:
+            type: object
+
+    ListSubscriptionsResponse:
+      description: Response containing a list of subscriptions.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+        nextToken:
+          type: string
+
+    ListSubscriptionRequestsResponse:
+      description: Response containing a list of subscription requests.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionRequest'
+        nextToken:
+          type: string
+
+    SearchListingsResponse:
+      description: Response containing catalog listing search results.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+        nextToken:
+          type: string
+        totalMatchCount:
+          type: integer
+
+    Environment:
+      description: A DataZone environment that provides data access capabilities for a project.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the environment
+        domainId:
+          type: string
+        projectId:
+          type: string
+        name:
+          type: string
+          description: The name of the environment
+        description:
+          type: string
+        status:
+          type: string
+          enum: [ACTIVE, CREATING, UPDATING, DELETING, DELETED, CREATE_FAILED, DELETE_FAILED, UPDATE_FAILED, DISABLED, EXPIRED, INACCESSIBLE, SUSPENDED]
+        createdAt:
+          type: string
+          format: date-time
+
+    CreateEnvironmentRequest:
+      description: Request body for creating a DataZone environment.
+      type: object
+      required:
+        - name
+        - domainIdentifier
+        - projectIdentifier
+        - environmentProfileIdentifier
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        domainIdentifier:
+          type: string
+        projectIdentifier:
+          type: string
+        environmentProfileIdentifier:
+          type: string
+
+    ListEnvironmentsResponse:
+      description: Response containing a list of environments.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+        nextToken:
+          type: string
+
+    Error:
+      description: Standard error response from the DataZone API.
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifying the type of error
