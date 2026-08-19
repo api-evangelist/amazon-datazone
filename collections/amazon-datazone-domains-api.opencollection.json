@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon DataZone Assets Domains API",
+    "version": "2018-05-10"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datazone.amazonaws.com/v2/domains",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists all Amazon DataZone domains in the account."
+        },
+        {
+          "info": {
+            "name": "Create Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datazone.amazonaws.com/v2/domains",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a DataZone domain. A domain contains a data catalog for data sharing and governance."
+        },
+        {
+          "info": {
+            "name": "Get Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets the details of a DataZone domain."
+        },
+        {
+          "info": {
+            "name": "Update Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a DataZone domain."
+        },
+        {
+          "info": {
+            "name": "Delete Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a DataZone domain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

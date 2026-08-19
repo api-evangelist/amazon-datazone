@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon DataZone Assets Environments API",
+    "version": "2018-05-10"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier/environments",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists environments in a DataZone domain."
+        },
+        {
+          "info": {
+            "name": "Create Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier/environments",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an environment in a DataZone project for data access and analytics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

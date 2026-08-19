@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon DataZone Assets Listings API",
+    "version": "2018-05-10"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier/listings",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "additionalAttributes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches for asset listings in the DataZone catalog."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

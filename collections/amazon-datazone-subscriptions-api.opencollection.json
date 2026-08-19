@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon DataZone Assets Subscriptions API",
+    "version": "2018-05-10"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier/subscriptions",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists subscriptions in a DataZone domain."
+        },
+        {
+          "info": {
+            "name": "List Subscription Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier/subscription-requests",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists subscription requests in a DataZone domain."
+        },
+        {
+          "info": {
+            "name": "Create Subscription Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier/subscription-requests",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a request to subscribe to a data asset listing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

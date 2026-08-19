@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon DataZone Assets API",
+    "version": "2018-05-10"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier/assets",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a data asset in the DataZone catalog."
+        },
+        {
+          "info": {
+            "name": "Get Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier/assets/:identifier",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets the details of a data asset in the DataZone catalog."
+        },
+        {
+          "info": {
+            "name": "Delete Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://datazone.amazonaws.com/v2/domains/:domainIdentifier/assets/:identifier",
+            "params": [
+              {
+                "name": "domainIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a data asset from the DataZone catalog."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

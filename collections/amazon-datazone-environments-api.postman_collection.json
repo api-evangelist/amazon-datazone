@@ -1,0 +1,291 @@
+{
+  "item": [
+    {
+      "id": "04451357-cc4b-417e-9822-df3b080eb750",
+      "name": "Environments",
+      "description": {
+        "content": "Operations for managing data environments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "393892fa-becd-4de7-abda-4b128682c63e",
+          "name": "List Environments",
+          "request": {
+            "name": "List Environments",
+            "description": {
+              "content": "Lists environments in a DataZone domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "domains",
+                ":domainIdentifier",
+                "environments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "projectIdentifier",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domainIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0ae7010f-336a-4e87-91e8-9183800837f5",
+              "name": "List of environments returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domains",
+                    ":domainIdentifier",
+                    "environments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "projectIdentifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domainIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"env_001abc\",\n      \"domainId\": \"dzd_1234567890abcde\",\n      \"projectId\": \"prj_abc123\",\n      \"name\": \"ProductionAnalyticsEnvironment\",\n      \"status\": \"ACTIVE\",\n      \"createdAt\": \"2024-02-15T10:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "686bd9e6-ccfd-4cec-ad9a-538e08adb0f1",
+          "name": "Create Environment",
+          "request": {
+            "name": "Create Environment",
+            "description": {
+              "content": "Creates an environment in a DataZone project for data access and analytics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "domains",
+                ":domainIdentifier",
+                "environments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domainIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"domainIdentifier\": \"<string>\",\n  \"projectIdentifier\": \"<string>\",\n  \"environmentProfileIdentifier\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b82d1590-ce57-43e8-aa9f-df9c4388e73a",
+              "name": "Environment created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domains",
+                    ":domainIdentifier",
+                    "environments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domainIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"ProductionAnalyticsEnvironment\",\n  \"description\": \"Production analytics environment with Athena and Glue access\",\n  \"domainIdentifier\": \"dzd_1234567890abcde\",\n  \"projectIdentifier\": \"prj_abc123\",\n  \"environmentProfileIdentifier\": \"envprofile_001\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"env_002xyz\",\n  \"domainId\": \"dzd_1234567890abcde\",\n  \"projectId\": \"prj_abc123\",\n  \"name\": \"ProductionAnalyticsEnvironment\",\n  \"status\": \"CREATING\",\n  \"createdAt\": \"2024-04-15T14:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datazone.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bd379e88-92c4-453a-9a31-fa5dce2b9974",
+    "name": "Amazon DataZone Assets Environments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.\n\nContact Support:\n Name: AWS Support",
+      "type": "text/plain"
+    }
+  }
+}

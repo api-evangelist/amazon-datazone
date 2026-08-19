@@ -1,0 +1,419 @@
+{
+  "item": [
+    {
+      "id": "ed253c73-10c5-460a-8193-f7b9298ad9e9",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Operations for managing data subscriptions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7b55b7a2-dbb2-4dea-8460-3ebedbbc65c6",
+          "name": "List Subscriptions",
+          "request": {
+            "name": "List Subscriptions",
+            "description": {
+              "content": "Lists subscriptions in a DataZone domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "domains",
+                ":domainIdentifier",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domainIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b476c4e1-2f9c-4f81-bf64-b397ac7c47c8",
+              "name": "List of subscriptions returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domains",
+                    ":domainIdentifier",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domainIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"sub_001abc\",\n      \"domainId\": \"dzd_1234567890abcde\",\n      \"status\": \"APPROVED\",\n      \"createdAt\": \"2024-03-01T10:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5bcd1fe-2c71-40e3-bd7b-afc6a0e4e37a",
+          "name": "List Subscription Requests",
+          "request": {
+            "name": "List Subscription Requests",
+            "description": {
+              "content": "Lists subscription requests in a DataZone domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "domains",
+                ":domainIdentifier",
+                "subscription-requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domainIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7881cfc0-518e-4f82-a4de-6ecf2808df2b",
+              "name": "List of subscription requests returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domains",
+                    ":domainIdentifier",
+                    "subscription-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domainIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"subreq_001\",\n      \"domainId\": \"dzd_1234567890abcde\",\n      \"status\": \"PENDING\",\n      \"requestReason\": \"Need access for Q2 analytics\",\n      \"createdAt\": \"2024-04-10T09:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6e336a9-ce69-479b-b733-04931f1600bf",
+          "name": "Create Subscription Request",
+          "request": {
+            "name": "Create Subscription Request",
+            "description": {
+              "content": "Creates a request to subscribe to a data asset listing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "domains",
+                ":domainIdentifier",
+                "subscription-requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domainIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestReason\": \"<string>\",\n  \"subscribedListings\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"subscribedPrincipals\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe1a167d-3f11-459f-a92c-bc46dfc26752",
+              "name": "Subscription request created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domains",
+                    ":domainIdentifier",
+                    "subscription-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domainIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestReason\": \"Need access to sales data for Q2 analytics project\",\n  \"subscribedListings\": [\n    {\n      \"identifier\": \"listing_001abc\"\n    }\n  ],\n  \"subscribedPrincipals\": [\n    {\n      \"project\": {\n        \"identifier\": \"prj_abc123\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"subreq_002\",\n  \"domainId\": \"dzd_1234567890abcde\",\n  \"status\": \"PENDING\",\n  \"requestReason\": \"Need access for Q2 analytics\",\n  \"createdAt\": \"2024-04-15T13:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datazone.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3969b697-650c-4d85-a85d-1fad0df15e5d",
+    "name": "Amazon DataZone Assets Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.\n\nContact Support:\n Name: AWS Support",
+      "type": "text/plain"
+    }
+  }
+}

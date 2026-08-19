@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "740f2e7e-1ba9-4726-b14d-9b9b90d8941c",
+      "name": "Listings",
+      "description": {
+        "content": "Operations for managing asset listings in the catalog",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af044cb8-4efb-487f-b500-e40380b92ee3",
+          "name": "Search Listings",
+          "request": {
+            "name": "Search Listings",
+            "description": {
+              "content": "Searches for asset listings in the DataZone catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "domains",
+                ":domainIdentifier",
+                "listings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "additionalAttributes",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "additionalAttributes",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domainIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "edb0e7e8-14f9-4210-80f0-d4b8fd34cb19",
+              "name": "Listings search results returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domains",
+                    ":domainIdentifier",
+                    "listings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalAttributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "additionalAttributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domainIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"listing_001abc\",\n      \"name\": \"SalesOrdersTable\",\n      \"description\": \"Daily sales orders table\",\n      \"domainId\": \"dzd_1234567890abcde\"\n    }\n  ],\n  \"nextToken\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datazone.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2146145b-4075-479b-a21b-14780165ccb7",
+    "name": "Amazon DataZone Assets Listings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.\n\nContact Support:\n Name: AWS Support",
+      "type": "text/plain"
+    }
+  }
+}
