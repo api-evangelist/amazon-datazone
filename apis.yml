@@ -151,6 +151,8 @@ apis:
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -179,6 +181,8 @@ apis:
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
