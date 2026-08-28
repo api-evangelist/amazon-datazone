@@ -11,8 +11,8 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: dataZoneApi
-  url: ../openapi/amazon-datazone-openapi.yml
+- name: assetsApi
+  url: ../openapi/amazon-datazone-assets-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: catalog-asset

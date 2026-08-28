@@ -11,8 +11,14 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: dataZoneApi
-  url: ../openapi/amazon-datazone-openapi.yml
+- name: assetsApi
+  url: ../openapi/amazon-datazone-assets-api-openapi.yml
+  type: openapi
+- name: listingsApi
+  url: ../openapi/amazon-datazone-listings-api-openapi.yml
+  type: openapi
+- name: projectsApi
+  url: ../openapi/amazon-datazone-projects-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: publish-data-product

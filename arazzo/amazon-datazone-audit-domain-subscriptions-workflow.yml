@@ -11,8 +11,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: dataZoneApi
-  url: ../openapi/amazon-datazone-openapi.yml
+- name: subscriptionsApi
+  url: ../openapi/amazon-datazone-subscriptions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: audit-domain-subscriptions

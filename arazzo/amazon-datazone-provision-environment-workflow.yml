@@ -12,8 +12,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: dataZoneApi
-  url: ../openapi/amazon-datazone-openapi.yml
+- name: environmentsApi
+  url: ../openapi/amazon-datazone-environments-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-environment
