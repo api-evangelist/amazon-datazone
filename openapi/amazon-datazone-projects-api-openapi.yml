@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon DataZone Assets Projects API
   description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
@@ -202,26 +202,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    ListProjectsResponse:
-      description: Response containing a list of projects.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
-        nextToken:
-          type: string
-    CreateProjectRequest:
-      description: Request body for creating a DataZone project.
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
     Project:
       description: A DataZone project that serves as a container for data assets and environments.
       type: object
@@ -254,9 +234,29 @@ components:
         code:
           type: string
           description: An error code identifying the type of error
+    ListProjectsResponse:
+      description: Response containing a list of projects.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        nextToken:
+          type: string
     UpdateProjectRequest:
       description: Request body for updating a DataZone project.
       type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    CreateProjectRequest:
+      description: Request body for creating a DataZone project.
+      type: object
+      required:
+      - name
       properties:
         name:
           type: string

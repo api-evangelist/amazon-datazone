@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon DataZone Assets Environments API
   description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
@@ -101,6 +101,25 @@ paths:
                     createdAt: '2024-04-15T14:00:00Z'
 components:
   schemas:
+    CreateEnvironmentRequest:
+      description: Request body for creating a DataZone environment.
+      type: object
+      required:
+      - name
+      - domainIdentifier
+      - projectIdentifier
+      - environmentProfileIdentifier
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        domainIdentifier:
+          type: string
+        projectIdentifier:
+          type: string
+        environmentProfileIdentifier:
+          type: string
     ListEnvironmentsResponse:
       description: Response containing a list of environments.
       type: object
@@ -145,25 +164,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    CreateEnvironmentRequest:
-      description: Request body for creating a DataZone environment.
-      type: object
-      required:
-      - name
-      - domainIdentifier
-      - projectIdentifier
-      - environmentProfileIdentifier
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        domainIdentifier:
-          type: string
-        projectIdentifier:
-          type: string
-        environmentProfileIdentifier:
-          type: string
   securitySchemes:
     awsSignatureV4:
       type: apiKey
