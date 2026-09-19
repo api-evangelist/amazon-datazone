@@ -107,6 +107,8 @@ apis:
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
