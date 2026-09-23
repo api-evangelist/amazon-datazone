@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon DataZone Assets Domains API
+  title: Amazon DataZone Domains API
   description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
   version: 2018-05-10
   contact:
@@ -196,6 +196,16 @@ paths:
                     status: DELETING
 components:
   schemas:
+    ListDomainsResponse:
+      description: Response containing a list of DataZone domains.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+        nextToken:
+          type: string
     UpdateDomainRequest:
       description: Request body for updating a DataZone domain.
       type: object
@@ -204,16 +214,6 @@ components:
           type: string
         description:
           type: string
-    Error:
-      description: Standard error response from the DataZone API.
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message
-        code:
-          type: string
-          description: An error code identifying the type of error
     Domain:
       description: A DataZone domain that serves as the organizational boundary for data catalog and governance.
       type: object
@@ -249,12 +249,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    DeleteDomainResponse:
-      description: Response after initiating domain deletion.
-      type: object
-      properties:
-        status:
-          type: string
     CreateDomainRequest:
       description: Request body for creating a DataZone domain.
       type: object
@@ -273,16 +267,22 @@ components:
           type: object
           additionalProperties:
             type: string
-    ListDomainsResponse:
-      description: Response containing a list of DataZone domains.
+    DeleteDomainResponse:
+      description: Response after initiating domain deletion.
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Domain'
-        nextToken:
+        status:
           type: string
+    Error:
+      description: Standard error response from the DataZone API.
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifying the type of error
   securitySchemes:
     awsSignatureV4:
       type: apiKey

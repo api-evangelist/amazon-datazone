@@ -121,6 +121,35 @@ paths:
           description: Asset deleted successfully
 components:
   schemas:
+    CreateAssetRequest:
+      description: Request body for creating a data asset.
+      type: object
+      required:
+      - name
+      - domainIdentifier
+      - owningProjectIdentifier
+      - typeIdentifier
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        domainIdentifier:
+          type: string
+        owningProjectIdentifier:
+          type: string
+        typeIdentifier:
+          type: string
+    Error:
+      description: Standard error response from the DataZone API.
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifying the type of error
     Asset:
       description: A data asset cataloged in the DataZone data catalog.
       type: object
@@ -147,35 +176,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    Error:
-      description: Standard error response from the DataZone API.
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message
-        code:
-          type: string
-          description: An error code identifying the type of error
-    CreateAssetRequest:
-      description: Request body for creating a data asset.
-      type: object
-      required:
-      - name
-      - domainIdentifier
-      - owningProjectIdentifier
-      - typeIdentifier
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        domainIdentifier:
-          type: string
-        owningProjectIdentifier:
-          type: string
-        typeIdentifier:
-          type: string
   securitySchemes:
     awsSignatureV4:
       type: apiKey

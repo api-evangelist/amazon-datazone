@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon DataZone Assets Environments API
+  title: Amazon DataZone Environments API
   description: The Amazon DataZone API provides programmatic access to create and manage data domains, data assets, data catalogs, projects, subscriptions, and governance policies for enterprise-wide data management and sharing.
   version: 2018-05-10
   contact:

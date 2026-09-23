@@ -1,12 +1,7 @@
 {
   "provider": "amazon-datazone",
   "sources": [
-    "amazon-datazone-assets-api-openapi.yml",
-    "amazon-datazone-domains-api-openapi.yml",
-    "amazon-datazone-environments-api-openapi.yml",
-    "amazon-datazone-listings-api-openapi.yml",
-    "amazon-datazone-projects-api-openapi.yml",
-    "amazon-datazone-subscriptions-api-openapi.yml"
+    "_original/amazon-datazone-openapi.yml"
   ],
   "outputs": [
     "amazon-datazone-assets-api-openapi.yml",
@@ -20,7 +15,16 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-datazone-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-datazone-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-datazone-domains-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-datazone-environments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-datazone-listings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-datazone-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-datazone-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
