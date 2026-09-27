@@ -196,16 +196,6 @@ paths:
                     status: DELETING
 components:
   schemas:
-    ListDomainsResponse:
-      description: Response containing a list of DataZone domains.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Domain'
-        nextToken:
-          type: string
     UpdateDomainRequest:
       description: Request body for updating a DataZone domain.
       type: object
@@ -249,6 +239,32 @@ components:
         updatedAt:
           type: string
           format: date-time
+    ListDomainsResponse:
+      description: Response containing a list of DataZone domains.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+        nextToken:
+          type: string
+    Error:
+      description: Standard error response from the DataZone API.
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifying the type of error
+    DeleteDomainResponse:
+      description: Response after initiating domain deletion.
+      type: object
+      properties:
+        status:
+          type: string
     CreateDomainRequest:
       description: Request body for creating a DataZone domain.
       type: object
@@ -267,22 +283,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    DeleteDomainResponse:
-      description: Response after initiating domain deletion.
-      type: object
-      properties:
-        status:
-          type: string
-    Error:
-      description: Standard error response from the DataZone API.
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message
-        code:
-          type: string
-          description: An error code identifying the type of error
   securitySchemes:
     awsSignatureV4:
       type: apiKey

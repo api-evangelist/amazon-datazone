@@ -221,7 +221,7 @@ apis:
     url: json-ld/amazon-datazone-context.jsonld
 common:
 - type: Website
-  url: https://amazon.com
+  url: https://aws.amazon.com/datazone/
 - type: AgenticAccess
   url: agentic-access/amazon-datazone-agentic-access.yml
 - type: TrustCenter
@@ -375,5 +375,5 @@ integrations:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product

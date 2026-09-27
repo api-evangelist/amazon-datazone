@@ -148,34 +148,16 @@ paths:
                     createdAt: '2024-04-15T13:00:00Z'
 components:
   schemas:
-    ListSubscriptionRequestsResponse:
-      description: Response containing a list of subscription requests.
+    ListSubscriptionsResponse:
+      description: Response containing a list of subscriptions.
       type: object
       properties:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/SubscriptionRequest'
+            type: object
         nextToken:
           type: string
-    CreateSubscriptionRequestRequest:
-      description: Request body for creating a subscription request.
-      type: object
-      required:
-      - requestReason
-      - subscribedListings
-      - subscribedPrincipals
-      properties:
-        requestReason:
-          type: string
-        subscribedListings:
-          type: array
-          items:
-            type: object
-        subscribedPrincipals:
-          type: array
-          items:
-            type: object
     SubscriptionRequest:
       description: A request to subscribe to a data asset listing in DataZone.
       type: object
@@ -197,14 +179,32 @@ components:
         createdAt:
           type: string
           format: date-time
-    ListSubscriptionsResponse:
-      description: Response containing a list of subscriptions.
+    CreateSubscriptionRequestRequest:
+      description: Request body for creating a subscription request.
+      type: object
+      required:
+      - requestReason
+      - subscribedListings
+      - subscribedPrincipals
+      properties:
+        requestReason:
+          type: string
+        subscribedListings:
+          type: array
+          items:
+            type: object
+        subscribedPrincipals:
+          type: array
+          items:
+            type: object
+    ListSubscriptionRequestsResponse:
+      description: Response containing a list of subscription requests.
       type: object
       properties:
         items:
           type: array
           items:
-            type: object
+            $ref: '#/components/schemas/SubscriptionRequest'
         nextToken:
           type: string
   securitySchemes:

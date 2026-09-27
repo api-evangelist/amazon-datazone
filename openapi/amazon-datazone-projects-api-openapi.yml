@@ -202,24 +202,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    ListProjectsResponse:
-      description: Response containing a list of projects.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
-        nextToken:
-          type: string
-    UpdateProjectRequest:
-      description: Request body for updating a DataZone project.
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
     Project:
       description: A DataZone project that serves as a container for data assets and environments.
       type: object
@@ -242,6 +224,24 @@ components:
         updatedAt:
           type: string
           format: date-time
+    UpdateProjectRequest:
+      description: Request body for updating a DataZone project.
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    ListProjectsResponse:
+      description: Response containing a list of projects.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        nextToken:
+          type: string
     Error:
       description: Standard error response from the DataZone API.
       type: object
