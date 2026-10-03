@@ -101,16 +101,6 @@ paths:
                     createdAt: '2024-04-15T14:00:00Z'
 components:
   schemas:
-    ListEnvironmentsResponse:
-      description: Response containing a list of environments.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Environment'
-        nextToken:
-          type: string
     Environment:
       description: A DataZone environment that provides data access capabilities for a project.
       type: object
@@ -163,6 +153,16 @@ components:
         projectIdentifier:
           type: string
         environmentProfileIdentifier:
+          type: string
+    ListEnvironmentsResponse:
+      description: Response containing a list of environments.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+        nextToken:
           type: string
   securitySchemes:
     awsSignatureV4:

@@ -196,49 +196,6 @@ paths:
                     status: DELETING
 components:
   schemas:
-    UpdateDomainRequest:
-      description: Request body for updating a DataZone domain.
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-    Domain:
-      description: A DataZone domain that serves as the organizational boundary for data catalog and governance.
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier of the domain
-        arn:
-          type: string
-          description: The ARN of the DataZone domain. This ARN uniquely identifies the domain.
-        name:
-          type: string
-          description: The name of the domain
-        description:
-          type: string
-          description: The description of the domain
-        status:
-          type: string
-          description: The current status of the domain
-          enum:
-          - AVAILABLE
-          - CREATING
-          - CREATION_FAILED
-          - DELETED
-          - DELETING
-          - DELETION_FAILED
-        portalUrl:
-          type: string
-          description: The URL of the DataZone portal for this domain
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
     ListDomainsResponse:
       description: Response containing a list of DataZone domains.
       type: object
@@ -283,6 +240,49 @@ components:
           type: object
           additionalProperties:
             type: string
+    Domain:
+      description: A DataZone domain that serves as the organizational boundary for data catalog and governance.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the domain
+        arn:
+          type: string
+          description: The ARN of the DataZone domain. This ARN uniquely identifies the domain.
+        name:
+          type: string
+          description: The name of the domain
+        description:
+          type: string
+          description: The description of the domain
+        status:
+          type: string
+          description: The current status of the domain
+          enum:
+          - AVAILABLE
+          - CREATING
+          - CREATION_FAILED
+          - DELETED
+          - DELETING
+          - DELETION_FAILED
+        portalUrl:
+          type: string
+          description: The URL of the DataZone portal for this domain
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    UpdateDomainRequest:
+      description: Request body for updating a DataZone domain.
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
   securitySchemes:
     awsSignatureV4:
       type: apiKey

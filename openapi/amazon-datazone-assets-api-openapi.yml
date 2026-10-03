@@ -147,16 +147,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    Error:
-      description: Standard error response from the DataZone API.
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message
-        code:
-          type: string
-          description: An error code identifying the type of error
     CreateAssetRequest:
       description: Request body for creating a data asset.
       type: object
@@ -176,6 +166,16 @@ components:
           type: string
         typeIdentifier:
           type: string
+    Error:
+      description: Standard error response from the DataZone API.
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifying the type of error
   securitySchemes:
     awsSignatureV4:
       type: apiKey

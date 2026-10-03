@@ -148,16 +148,24 @@ paths:
                     createdAt: '2024-04-15T13:00:00Z'
 components:
   schemas:
-    ListSubscriptionsResponse:
-      description: Response containing a list of subscriptions.
+    CreateSubscriptionRequestRequest:
+      description: Request body for creating a subscription request.
       type: object
+      required:
+      - requestReason
+      - subscribedListings
+      - subscribedPrincipals
       properties:
-        items:
+        requestReason:
+          type: string
+        subscribedListings:
           type: array
           items:
             type: object
-        nextToken:
-          type: string
+        subscribedPrincipals:
+          type: array
+          items:
+            type: object
     SubscriptionRequest:
       description: A request to subscribe to a data asset listing in DataZone.
       type: object
@@ -179,24 +187,16 @@ components:
         createdAt:
           type: string
           format: date-time
-    CreateSubscriptionRequestRequest:
-      description: Request body for creating a subscription request.
+    ListSubscriptionsResponse:
+      description: Response containing a list of subscriptions.
       type: object
-      required:
-      - requestReason
-      - subscribedListings
-      - subscribedPrincipals
       properties:
-        requestReason:
+        items:
+          type: array
+          items:
+            type: object
+        nextToken:
           type: string
-        subscribedListings:
-          type: array
-          items:
-            type: object
-        subscribedPrincipals:
-          type: array
-          items:
-            type: object
     ListSubscriptionRequestsResponse:
       description: Response containing a list of subscription requests.
       type: object
