@@ -1,0 +1,46 @@
+slug: amazon-datazone
+provider: Amazon DataZone
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Assets
+  spec_file: amazon-datazone-assets-api-openapi.yml
+  capability_id: BC-610.10
+  capability_id_l1: BC-610
+  capability_name: Data Governance Management
+  confidence: 0.7
+  evidence: '"Create Asset" under /v2/domains/{domainIdentifier}/assets; service "helps you catalog, discover,
+    govern, share ... data"'
+  reason: Registration and lifecycle of catalogued data assets within governed data domains is data cataloguing/stewardship,
+    i.e. Data Governance Management.
+- tag: Domains
+  spec_file: amazon-datazone-domains-api-openapi.yml
+  capability_id: BC-610.10
+  capability_id_l1: BC-610
+  capability_name: Data Governance Management
+  confidence: 0.7
+  evidence: '"Create Domain", "Update Domain"; "DataZone provides domain-based governance"'
+  reason: Data domains are the governance boundary for ownership and stewardship of data assets, mapping
+    to Data Governance Management.
+- tag: Subscriptions
+  spec_file: amazon-datazone-subscriptions-api-openapi.yml
+  capability_id: BC-610.10
+  capability_id_l1: BC-610
+  capability_name: Data Governance Management
+  confidence: 0.7
+  evidence: GET /v2/domains/{domainIdentifier}/subscriptions listSubscriptions; POST subscription-requests
+    createSubscriptionRequest — data domains, data assets, data catalogs, projects, subscriptions, and
+    governance policies
+  reason: Despite the commercial-sounding tag, these 'subscriptions' are requests to access governed data
+    assets in a data catalog — data governance/sharing, not SaaS subscription lifecycle. Mapped to Data
+    Governance Management with moderate confidence.

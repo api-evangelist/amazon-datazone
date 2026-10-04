@@ -220,6 +220,9 @@ apis:
   - type: JSONLD
     url: json-ld/amazon-datazone-context.jsonld
 common:
+- type: CapabilityMap
+  url: capabilities/amazon-datazone-capability-edges.yml
+  name: Amazon DataZone Business Capability Map
 - type: Website
   url: https://aws.amazon.com/datazone/
 - type: AgenticAccess
