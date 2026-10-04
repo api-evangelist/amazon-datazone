@@ -121,6 +121,16 @@ paths:
           description: Asset deleted successfully
 components:
   schemas:
+    Error:
+      description: Standard error response from the DataZone API.
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifying the type of error
     Asset:
       description: A data asset cataloged in the DataZone data catalog.
       type: object
@@ -166,16 +176,6 @@ components:
           type: string
         typeIdentifier:
           type: string
-    Error:
-      description: Standard error response from the DataZone API.
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message
-        code:
-          type: string
-          description: An error code identifying the type of error
   securitySchemes:
     awsSignatureV4:
       type: apiKey

@@ -196,16 +196,6 @@ paths:
                     status: DELETING
 components:
   schemas:
-    ListDomainsResponse:
-      description: Response containing a list of DataZone domains.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Domain'
-        nextToken:
-          type: string
     Error:
       description: Standard error response from the DataZone API.
       type: object
@@ -222,24 +212,6 @@ components:
       properties:
         status:
           type: string
-    CreateDomainRequest:
-      description: Request body for creating a DataZone domain.
-      type: object
-      required:
-      - name
-      - domainExecutionRole
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        domainExecutionRole:
-          type: string
-          description: The ARN of the IAM role for DataZone to use when executing domain operations
-        tags:
-          type: object
-          additionalProperties:
-            type: string
     Domain:
       description: A DataZone domain that serves as the organizational boundary for data catalog and governance.
       type: object
@@ -275,6 +247,24 @@ components:
         updatedAt:
           type: string
           format: date-time
+    CreateDomainRequest:
+      description: Request body for creating a DataZone domain.
+      type: object
+      required:
+      - name
+      - domainExecutionRole
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        domainExecutionRole:
+          type: string
+          description: The ARN of the IAM role for DataZone to use when executing domain operations
+        tags:
+          type: object
+          additionalProperties:
+            type: string
     UpdateDomainRequest:
       description: Request body for updating a DataZone domain.
       type: object
@@ -282,6 +272,16 @@ components:
         name:
           type: string
         description:
+          type: string
+    ListDomainsResponse:
+      description: Response containing a list of DataZone domains.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+        nextToken:
           type: string
   securitySchemes:
     awsSignatureV4:
