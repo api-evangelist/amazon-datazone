@@ -148,6 +148,26 @@ paths:
                     createdAt: '2024-04-15T13:00:00Z'
 components:
   schemas:
+    ListSubscriptionRequestsResponse:
+      description: Response containing a list of subscription requests.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionRequest'
+        nextToken:
+          type: string
+    ListSubscriptionsResponse:
+      description: Response containing a list of subscriptions.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+        nextToken:
+          type: string
     SubscriptionRequest:
       description: A request to subscribe to a data asset listing in DataZone.
       type: object
@@ -187,26 +207,6 @@ components:
           type: array
           items:
             type: object
-    ListSubscriptionsResponse:
-      description: Response containing a list of subscriptions.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: object
-        nextToken:
-          type: string
-    ListSubscriptionRequestsResponse:
-      description: Response containing a list of subscription requests.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubscriptionRequest'
-        nextToken:
-          type: string
   securitySchemes:
     awsSignatureV4:
       type: apiKey
