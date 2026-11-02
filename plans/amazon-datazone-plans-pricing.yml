@@ -1,0 +1,108 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://aws.amazon.com/datazone/pricing/
+sources:
+- https://aws.amazon.com/datazone/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: Pay-as-you-go pricing across four dimensions; no monthly user-based subscription charge as of Nov
+  1, 2024. Certain core APIs free of charge.
+plan_count: 5
+currency: USD
+plans:
+- name: Requests
+  price_text: $10 per 100,000 requests
+  price: 10
+  currency: USD
+  period: per-use
+  unit: 100,000 requests
+  included_quota: 4,000 free requests in a billing month per account
+- name: Metadata Storage
+  price_text: $0.4 per GB
+  price: 0.4
+  currency: USD
+  period: per-use
+  unit: GB
+  included_quota: 20 MB of free storage in a billing month per account
+- name: Compute
+  price_text: $1.776 per compute unit
+  price: 1.776
+  currency: USD
+  period: per-use
+  unit: compute unit
+  included_quota: 0.2 free compute units in a billing month per account
+- name: Recommendations - Input tokens
+  price_text: $0.015 per 1,000 Input tokens
+  price: 0.015
+  currency: USD
+  period: per-use
+  unit: 1,000 input tokens
+  included_quota: No free usage
+- name: Recommendations - Output tokens
+  price_text: $0.075 per 1,000 Output tokens
+  price: 0.075
+  currency: USD
+  period: per-use
+  unit: 1,000 output tokens
+  included_quota: No free usage
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - subscription
+  units:
+  - data
+  - request
+  - token
+  plans:
+  - name: Requests
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Metadata Storage
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Compute
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Recommendations - Input tokens
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
+  - name: Recommendations - Output tokens
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
