@@ -1,10 +1,9 @@
 aid: amazon-datazone
 name: Amazon DataZone
-description: Amazon DataZone is a data management service that helps you catalog, discover, govern, share,
-  and analyze your data across your organization and beyond. It enables data producers and consumers to
-  collaborate, with built-in governance, data catalog capabilities, and a business data catalog to organize
-  and share data across your AWS environment. DataZone provides domain-based governance, project workspaces,
-  subscription-based access control, and integration with AWS analytics services.
+description: Amazon DataZone is a data management service that helps you catalog, discover, govern, share, and analyze your data across your organization
+  and beyond. It enables data producers and consumers to collaborate, with built-in governance, data catalog capabilities, and a business data
+  catalog to organize and share data across your AWS environment. DataZone provides domain-based governance, project workspaces, subscription-based
+  access control, and integration with AWS analytics services.
 type: Index
 deliveryModel:
   model: saas
@@ -30,7 +29,7 @@ accessModel:
   - plans
   - authentication
   - security
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-datazone.png
 tags:
@@ -51,6 +50,206 @@ url: https://raw.githubusercontent.com/api-evangelist/amazon-datazone/refs/heads
 created: '2026-03-16'
 modified: '2026-09-16'
 specificationVersion: '0.23'
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+common:
+- type: Spectral
+  url: rules/amazon-datazone-spectral-rules.yml
+- type: Spectral
+  url: rules/amazon-datazone-rules.yml
+- type: Spectral
+  url: rules/amazon-datazone-jsonschema-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-datazone-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/amazon-datazone-data-model.yml
+- type: CLI
+  url: cli/amazon-datazone-cli.yml
+- type: ChangeLog
+  url: changelog/amazon-datazone-changelog.yml
+- type: Idempotency
+  url: conventions/amazon-datazone-conventions.yml
+- type: Conventions
+  url: conventions/amazon-datazone-conventions.yml
+- type: Compliance
+  url: https://aws.amazon.com/compliance/
+- type: Lifecycle
+  url: lifecycle/amazon-datazone-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/amazon-datazone-problem-types.yml
+- type: Conformance
+  url: conformance/amazon-datazone-conformance.yml
+- type: LLMsTxt
+  url: llms/amazon-datazone-llms.txt
+- type: ToolCrosswalk
+  url: mcp/amazon-datazone-tool-crosswalk.yml
+- type: MCPServer
+  url: mcp/amazon-datazone-mcp.yml
+- type: SecurityTxt
+  url: well-known/amazon-datazone-security.txt
+- type: WellKnown
+  url: well-known/amazon-datazone-well-known.yml
+- type: Hosts
+  url: hosts/amazon-datazone-hosts.yml
+- type: Vendors
+  url: vendors/amazon-datazone-vendors.yml
+- type: SDKs
+  url: packages/amazon-datazone-packages.yml
+- type: Packages
+  url: packages/amazon-datazone-packages.yml
+- type: Security
+  url: https://aws.amazon.com/security/?nc2=h_dsc_aa_sec
+- type: Newsroom
+  url: https://aws.amazon.com/media/?nc2=h_sol_ind_med
+- type: GettingStarted
+  url: https://developer.amazon.com/frustration-free-setup
+- type: Plans
+  url: plans/amazon-datazone-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/amazon-datazone-rate-limits.yml
+- type: FinOps
+  url: finops/amazon-datazone-finops.yml
+- type: CapabilityMap
+  url: capabilities/amazon-datazone-capability-edges.yml
+  name: Amazon DataZone Business Capability Map
+- type: Website
+  url: https://aws.amazon.com/datazone/
+- type: AgenticAccess
+  url: agentic-access/amazon-datazone-agentic-access.yml
+- type: TrustCenter
+  url: security/amazon-datazone-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-datazone-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-datazone-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-datazone-authentication.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-datazone/overview
+- type: Arazzo
+  url: arazzo/amazon-datazone-audit-domain-subscriptions-workflow.yml
+  name: Amazon DataZone Audit Domain Subscriptions
+- type: Arazzo
+  url: arazzo/amazon-datazone-bootstrap-domain-and-project-workflow.yml
+  name: Amazon DataZone Bootstrap Domain and Project
+- type: Arazzo
+  url: arazzo/amazon-datazone-catalog-asset-workflow.yml
+  name: Amazon DataZone Catalog a Data Asset
+- type: Arazzo
+  url: arazzo/amazon-datazone-discover-and-subscribe-workflow.yml
+  name: Amazon DataZone Discover and Subscribe
+- type: Arazzo
+  url: arazzo/amazon-datazone-onboard-data-workspace-workflow.yml
+  name: Amazon DataZone Onboard Data Workspace
+- type: Arazzo
+  url: arazzo/amazon-datazone-provision-domain-workflow.yml
+  name: Amazon DataZone Provision Domain
+- type: Arazzo
+  url: arazzo/amazon-datazone-provision-environment-workflow.yml
+  name: Amazon DataZone Provision Environment
+- type: Arazzo
+  url: arazzo/amazon-datazone-publish-data-product-workflow.yml
+  name: Amazon DataZone Publish Data Product
+- type: Arazzo
+  url: arazzo/amazon-datazone-rename-project-workflow.yml
+  name: Amazon DataZone Rename Project
+- type: Arazzo
+  url: arazzo/amazon-datazone-request-and-track-subscription-workflow.yml
+  name: Amazon DataZone Request and Track Subscription
+- type: Arazzo
+  url: arazzo/amazon-datazone-teardown-domain-workflow.yml
+  name: Amazon DataZone Teardown Domain
+- type: Arazzo
+  url: arazzo/amazon-datazone-teardown-project-workflow.yml
+  name: Amazon DataZone Teardown Project
+- type: Portal
+  url: https://aws.amazon.com/datazone/
+- type: DeveloperPortal
+  url: https://aws.amazon.com/datazone/
+- type: Documentation
+  url: https://docs.aws.amazon.com/datazone/
+- type: TermsOfService
+  url: https://aws.amazon.com/service-terms/
+- type: PrivacyPolicy
+  url: https://aws.amazon.com/privacy/
+- type: Support
+  url: https://aws.amazon.com/premiumsupport/
+- type: Blog
+  url: https://aws.amazon.com/blogs/big-data/
+- type: GitHubOrganization
+  url: https://github.com/aws
+- type: Console
+  url: https://console.aws.amazon.com/datazone/
+- type: Signup
+  url: https://portal.aws.amazon.com/billing/signup
+- type: Login
+  url: https://signin.aws.amazon.com/
+- type: StatusPage
+  url: https://health.aws.amazon.com/health/status
+- type: Contact
+  url: https://aws.amazon.com/contact-us/
+- type: SpectralRules
+  url: rules/amazon-datazone-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-datazone-vocabulary.yaml
+- type: Features
+  data:
+  - name: Business Data Catalog
+    description: Central catalog where data producers publish assets and data consumers can discover, understand, and request access to data products.
+  - name: Domain-Based Governance
+    description: Organize data assets, users, and governance policies within domains that reflect your organizational structure and data ownership.
+  - name: Subscription Workflow
+    description: Built-in request/approval workflow for data consumers to request access to data assets with business justification and audit
+      trail.
+  - name: Project Workspaces
+    description: Isolated project containers within domains where teams organize their data assets, environments, and members.
+  - name: Analytics Environment Provisioning
+    description: Automatically provision data access environments with Athena, Glue, Redshift, or other tools when subscriptions are approved.
+  - name: Glue Data Catalog Integration
+    description: Automatically discover and import tables from AWS Glue Data Catalog into DataZone for cataloging and governance.
+  - name: Data Lineage
+    description: Track data lineage across assets to understand data origins, transformations, and dependencies for trust and compliance.
+- type: UseCases
+  data:
+  - name: Enterprise Data Marketplace
+    description: Build an internal data marketplace where business units publish their data products for discovery and consumption by other teams.
+  - name: Data Access Governance
+    description: Implement governed data access with approval workflows ensuring data consumers have proper authorization and business justification.
+  - name: Cross-Account Data Sharing
+    description: Share data assets across AWS accounts within an organization using DataZone's subscription and access management capabilities.
+  - name: Self-Service Analytics
+    description: Enable analysts to discover and access data independently through the DataZone catalog with automatic environment provisioning.
+  - name: Regulatory Data Compliance
+    description: Maintain audit trails of data access, govern sensitive data assets, and enforce data residency policies through domain governance.
+- type: Integrations
+  data:
+  - name: AWS Glue
+    description: DataZone integrates with Glue Data Catalog to automatically discover, import, and catalog Glue tables for sharing and governance.
+  - name: Amazon Redshift
+    description: Catalog Redshift tables and views and govern cross-cluster data sharing through DataZone subscription workflows.
+  - name: Amazon Athena
+    description: DataZone environments provision Athena as a query engine for subscribers accessing S3-based data assets.
+  - name: Amazon S3
+    description: Catalog S3-based datasets in DataZone and control access through subscription-based Lake Formation permissions.
+  - name: AWS Lake Formation
+    description: DataZone uses Lake Formation for fine-grained column and row-level access control when subscriptions are approved.
+  - name: AWS IAM
+    description: IAM roles provide domain execution context and identity-based access control for DataZone resources and catalog operations.
+- type: Integrations
+  url: https://aws.amazon.com/marketplace
+- type: UsageTerms
+  url: terms/amazon-datazone-terms-of-service.yml
+- type: DataProcessing
+  url: privacy/amazon-datazone-privacy-policy.yml
+- type: Attestations
+  url: compliance/amazon-datazone-compliance.yml
+- type: Eligibility
+  url: eligibility/amazon-datazone-eligibility.yml
+- type: AIPreferences
+  url: ai-preferences/amazon-datazone-ai-preferences.yml
 apis:
 - aid: amazon-datazone:amazon-datazone-assets-api
   name: Amazon DataZone Assets API
@@ -228,8 +427,7 @@ apis:
     url: json-ld/amazon-datazone-context.jsonld
 - aid: amazon-datazone:amazon-datazone-account-pools-api
   name: Amazon DataZone Datazone Account Pools API
-  description: >-
-    The Datazone Account Pools API from Amazon DataZone — 2 operation(s) for datazone account pools.
+  description: The Datazone Account Pools API from Amazon DataZone — 2 operation(s) for datazone account pools.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -237,6 +435,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-account-pools-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-account-pools-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-account-pool-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-account-pool-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-account-pool-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-account-pool-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-account-pool-input-schema.json
 - aid: amazon-datazone:amazon-datazone-actions-api
   name: Amazon DataZone Datazone Actions API
   description: The Datazone Actions API from Amazon DataZone — 2 operation(s) for datazone actions.
@@ -247,10 +457,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-actions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-environment-actions-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-environment-action-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-environment-action-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-environment-action-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-environment-action-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-environment-actions-output-schema.json
 - aid: amazon-datazone:amazon-datazone-asset-types-api
   name: Amazon DataZone Datazone Asset Types API
-  description: >-
-    The Datazone Asset Types API from Amazon DataZone — 2 operation(s) for datazone asset types.
+  description: The Datazone Asset Types API from Amazon DataZone — 2 operation(s) for datazone asset types.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -258,10 +479,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-asset-types-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-asset-type-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-asset-type-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-asset-type-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-asset-type-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-asset-type-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-asset-type-output-schema.json
 - aid: amazon-datazone:amazon-datazone-connections-api
   name: Amazon DataZone Datazone Connections API
-  description: >-
-    The Datazone Connections API from Amazon DataZone — 2 operation(s) for datazone connections.
+  description: The Datazone Connections API from Amazon DataZone — 2 operation(s) for datazone connections.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -269,11 +501,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-connections-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-connections-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-connection-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-connection-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-connection-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-connection-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-connection-input-schema.json
 - aid: amazon-datazone:amazon-datazone-data-export-configuration-api
   name: Amazon DataZone Datazone Data Export Configuration API
-  description: >-
-    The Datazone Data Export Configuration API from Amazon DataZone — 1 operation(s) for datazone data
-    export configuration.
+  description: The Datazone Data Export Configuration API from Amazon DataZone — 1 operation(s) for datazone data export configuration.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -281,10 +523,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-data-export-configuration-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-data-export-configuration-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-put-data-export-configuration-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-data-export-configuration-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-data-export-configuration-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-data-export-configuration-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-put-data-export-configuration-output-schema.json
 - aid: amazon-datazone:amazon-datazone-data-products-api
   name: Amazon DataZone Datazone Data Products API
-  description: >-
-    The Datazone Data Products API from Amazon DataZone — 2 operation(s) for datazone data products.
+  description: The Datazone Data Products API from Amazon DataZone — 2 operation(s) for datazone data products.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -292,10 +545,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-data-products-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-data-product-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-data-product-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-data-product-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-data-product-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-data-product-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-data-product-output-schema.json
 - aid: amazon-datazone:amazon-datazone-data-sources-api
   name: Amazon DataZone Datazone Data Sources API
-  description: >-
-    The Datazone Data Sources API from Amazon DataZone — 2 operation(s) for datazone data sources.
+  description: The Datazone Data Sources API from Amazon DataZone — 2 operation(s) for datazone data sources.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -303,10 +567,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-data-sources-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-data-source-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-data-source-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-data-source-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-data-source-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-data-source-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-data-sources-input-schema.json
 - aid: amazon-datazone:amazon-datazone-designations-api
   name: Amazon DataZone Datazone Designations API
-  description: >-
-    The Datazone Designations API from Amazon DataZone — 2 operation(s) for datazone designations.
+  description: The Datazone Designations API from Amazon DataZone — 2 operation(s) for datazone designations.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -314,10 +589,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-designations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-designation-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-designation-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-designation-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-designation-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-designations-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-designation-input-schema.json
 - aid: amazon-datazone:amazon-datazone-domain-units-api
   name: Amazon DataZone Datazone Domain Units API
-  description: >-
-    The Datazone Domain Units API from Amazon DataZone — 2 operation(s) for datazone domain units.
+  description: The Datazone Domain Units API from Amazon DataZone — 2 operation(s) for datazone domain units.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -325,11 +611,22 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-domain-units-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-domain-unit-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-domain-units-for-parent-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-domain-unit-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-domain-unit-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-domain-unit-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-domain-units-for-parent-output-schema.json
 - aid: amazon-datazone:amazon-datazone-environment-blueprint-configurations-api
   name: Amazon DataZone Datazone Environment Blueprint Configurations API
-  description: >-
-    The Datazone Environment Blueprint Configurations API from Amazon DataZone — 2 operation(s) for datazone
-    environment blueprint configurations.
+  description: The Datazone Environment Blueprint Configurations API from Amazon DataZone — 2 operation(s) for datazone environment blueprint
+    configurations.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -337,11 +634,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-environment-blueprint-configurations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-environment-blueprint-configuration-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-put-environment-blueprint-configuration-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-put-environment-blueprint-configuration-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-environment-blueprint-configurations-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-environment-blueprint-configurations-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-environment-blueprint-configuration-input-schema.json
 - aid: amazon-datazone:amazon-datazone-environment-blueprints-api
   name: Amazon DataZone Datazone Environment Blueprints API
-  description: >-
-    The Datazone Environment Blueprints API from Amazon DataZone — 2 operation(s) for datazone environment
-    blueprints.
+  description: The Datazone Environment Blueprints API from Amazon DataZone — 2 operation(s) for datazone environment blueprints.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -349,11 +656,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-environment-blueprints-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-environment-blueprint-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-environment-blueprint-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-environment-blueprint-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-environment-blueprints-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-environment-blueprint-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-environment-blueprint-input-schema.json
 - aid: amazon-datazone:amazon-datazone-environment-profiles-api
   name: Amazon DataZone Datazone Environment Profiles API
-  description: >-
-    The Datazone Environment Profiles API from Amazon DataZone — 2 operation(s) for datazone environment
-    profiles.
+  description: The Datazone Environment Profiles API from Amazon DataZone — 2 operation(s) for datazone environment profiles.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -361,6 +678,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-environment-profiles-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-environment-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-environment-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-environment-profiles-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-environment-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-environment-profile-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-environment-profile-input-schema.json
 - aid: amazon-datazone:amazon-datazone-filters-api
   name: Amazon DataZone Datazone Filters API
   description: The Datazone Filters API from Amazon DataZone — 2 operation(s) for datazone filters.
@@ -371,10 +700,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-filters-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-asset-filter-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-asset-filter-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-asset-filter-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-asset-filters-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-asset-filter-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-asset-filters-output-schema.json
 - aid: amazon-datazone:amazon-datazone-form-types-api
   name: Amazon DataZone Datazone Form Types API
-  description: >-
-    The Datazone Form Types API from Amazon DataZone — 2 operation(s) for datazone form types.
+  description: The Datazone Form Types API from Amazon DataZone — 2 operation(s) for datazone form types.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -382,10 +722,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-form-types-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-form-type-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-form-type-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-form-type-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-form-type-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-form-type-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-form-type-output-schema.json
 - aid: amazon-datazone:amazon-datazone-glossaries-api
   name: Amazon DataZone Datazone Glossaries API
-  description: >-
-    The Datazone Glossaries API from Amazon DataZone — 2 operation(s) for datazone glossaries.
+  description: The Datazone Glossaries API from Amazon DataZone — 2 operation(s) for datazone glossaries.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -393,10 +744,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-glossaries-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-glossary-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-glossary-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-glossary-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-glossary-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-glossary-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-glossary-input-schema.json
 - aid: amazon-datazone:amazon-datazone-glossary-terms-api
   name: Amazon DataZone Datazone Glossary Terms API
-  description: >-
-    The Datazone Glossary Terms API from Amazon DataZone — 2 operation(s) for datazone glossary terms.
+  description: The Datazone Glossary Terms API from Amazon DataZone — 2 operation(s) for datazone glossary terms.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -404,10 +766,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-glossary-terms-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-glossary-term-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-glossary-term-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-glossary-term-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-glossary-term-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-glossary-term-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-glossary-term-input-schema.json
 - aid: amazon-datazone:amazon-datazone-group-profiles-api
   name: Amazon DataZone Datazone Group Profiles API
-  description: >-
-    The Datazone Group Profiles API from Amazon DataZone — 2 operation(s) for datazone group profiles.
+  description: The Datazone Group Profiles API from Amazon DataZone — 2 operation(s) for datazone group profiles.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -415,6 +788,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-group-profiles-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-group-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-group-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-group-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-group-profile-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-group-profile-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-group-profile-input-schema.json
 - aid: amazon-datazone:amazon-datazone-lineage-api
   name: Amazon DataZone Datazone Lineage API
   description: The Datazone Lineage API from Amazon DataZone — 3 operation(s) for datazone lineage.
@@ -425,11 +810,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-lineage-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-lineage-node-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-lineage-events-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-lineage-event-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-lineage-node-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-lineage-events-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-post-lineage-event-input-schema.json
 - aid: amazon-datazone:amazon-datazone-metadata-generation-runs-api
   name: Amazon DataZone Datazone Metadata Generation Runs API
-  description: >-
-    The Datazone Metadata Generation Runs API from Amazon DataZone — 2 operation(s) for datazone metadata
-    generation runs.
+  description: The Datazone Metadata Generation Runs API from Amazon DataZone — 2 operation(s) for datazone metadata generation runs.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -437,10 +832,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-metadata-generation-runs-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-metadata-generation-runs-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-metadata-generation-run-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-start-metadata-generation-run-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-start-metadata-generation-run-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-metadata-generation-runs-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-metadata-generation-run-input-schema.json
 - aid: amazon-datazone:amazon-datazone-notebook-runs-api
   name: Amazon DataZone Datazone Notebook Runs API
-  description: >-
-    The Datazone Notebook Runs API from Amazon DataZone — 2 operation(s) for datazone notebook runs.
+  description: The Datazone Notebook Runs API from Amazon DataZone — 2 operation(s) for datazone notebook runs.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -448,6 +854,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-notebook-runs-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-notebook-run-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-start-notebook-run-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-start-notebook-run-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-notebook-runs-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-notebook-runs-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-notebook-run-input-schema.json
 - aid: amazon-datazone:amazon-datazone-notebooks-api
   name: Amazon DataZone Datazone Notebooks API
   description: The Datazone Notebooks API from Amazon DataZone — 2 operation(s) for datazone notebooks.
@@ -458,10 +876,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-notebooks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-notebook-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-notebook-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-notebook-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-notebook-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-notebooks-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-notebook-input-schema.json
 - aid: amazon-datazone:amazon-datazone-operations-api
   name: Amazon DataZone Datazone Operations API
-  description: >-
-    The Datazone Operations API from Amazon DataZone — 41 operation(s) for datazone operations.
+  description: The Datazone Operations API from Amazon DataZone — 41 operation(s) for datazone operations.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -469,10 +898,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-operations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-accept-subscription-request-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-reject-subscription-request-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-lineage-node-history-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-rules-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-policy-grants-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-subscription-grant-status-output-schema.json
 - aid: amazon-datazone:amazon-datazone-project-profiles-api
   name: Amazon DataZone Datazone Project Profiles API
-  description: >-
-    The Datazone Project Profiles API from Amazon DataZone — 2 operation(s) for datazone project profiles.
+  description: The Datazone Project Profiles API from Amazon DataZone — 2 operation(s) for datazone project profiles.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -480,6 +920,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-project-profiles-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-project-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-project-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-project-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-project-profile-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-project-profiles-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-project-profile-input-schema.json
 - aid: amazon-datazone:amazon-datazone-revisions-api
   name: Amazon DataZone Datazone Revisions API
   description: The Datazone Revisions API from Amazon DataZone — 2 operation(s) for datazone revisions.
@@ -490,6 +942,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-revisions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-asset-revision-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-data-product-revision-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-data-product-revisions-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-asset-revision-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-data-product-revision-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-asset-revisions-input-schema.json
 - aid: amazon-datazone:amazon-datazone-rules-api
   name: Amazon DataZone Datazone Rules API
   description: The Datazone Rules API from Amazon DataZone — 2 operation(s) for datazone rules.
@@ -500,6 +964,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-rules-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-rule-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-rule-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-rule-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-rule-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-rule-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-rule-input-schema.json
 - aid: amazon-datazone:amazon-datazone-runs-api
   name: Amazon DataZone Datazone Runs API
   description: The Datazone Runs API from Amazon DataZone — 2 operation(s) for datazone runs.
@@ -510,11 +986,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-runs-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-start-data-source-run-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-job-runs-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-data-source-runs-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-data-source-runs-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-job-runs-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-start-data-source-run-input-schema.json
 - aid: amazon-datazone:amazon-datazone-subscription-grants-api
   name: Amazon DataZone Datazone Subscription Grants API
-  description: >-
-    The Datazone Subscription Grants API from Amazon DataZone — 2 operation(s) for datazone subscription
-    grants.
+  description: The Datazone Subscription Grants API from Amazon DataZone — 2 operation(s) for datazone subscription grants.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -522,11 +1008,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-subscription-grants-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-subscription-grants-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-subscription-grant-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-subscription-grant-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-subscription-grant-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-subscription-grant-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-subscription-grants-output-schema.json
 - aid: amazon-datazone:amazon-datazone-subscription-requests-api
   name: Amazon DataZone Datazone Subscription Requests API
-  description: >-
-    The Datazone Subscription Requests API from Amazon DataZone — 2 operation(s) for datazone subscription
-    requests.
+  description: The Datazone Subscription Requests API from Amazon DataZone — 2 operation(s) for datazone subscription requests.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -534,11 +1030,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-subscription-requests-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-subscription-requests-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-subscription-request-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-subscription-request-details-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-subscription-request-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-subscription-request-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-subscription-requests-output-schema.json
 - aid: amazon-datazone:amazon-datazone-subscription-targets-api
   name: Amazon DataZone Datazone Subscription Targets API
-  description: >-
-    The Datazone Subscription Targets API from Amazon DataZone — 2 operation(s) for datazone subscription
-    targets.
+  description: The Datazone Subscription Targets API from Amazon DataZone — 2 operation(s) for datazone subscription targets.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -546,6 +1052,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-subscription-targets-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-subscription-target-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-subscription-target-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-subscription-target-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-subscription-target-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-subscription-target-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-subscription-targets-input-schema.json
 - aid: amazon-datazone:amazon-datazone-tags-api
   name: Amazon DataZone Datazone Tags API
   description: The Datazone Tags API from Amazon DataZone — 1 operation(s) for datazone tags.
@@ -556,11 +1074,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-tags-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-tag-resource-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-untag-resource-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-tags-for-resource-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-tags-for-resource-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-tag-resource-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-untag-resource-response-schema.json
 - aid: amazon-datazone:amazon-datazone-time-series-data-points-api
   name: Amazon DataZone Datazone Time Series Data Points API
-  description: >-
-    The Datazone Time Series Data Points API from Amazon DataZone — 2 operation(s) for datazone time series
-    data points.
+  description: The Datazone Time Series Data Points API from Amazon DataZone — 2 operation(s) for datazone time series data points.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -568,10 +1096,21 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-time-series-data-points-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-time-series-data-points-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-post-time-series-data-points-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-delete-time-series-data-points-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-time-series-data-point-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-time-series-data-point-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-list-time-series-data-points-output-schema.json
 - aid: amazon-datazone:amazon-datazone-user-profiles-api
   name: Amazon DataZone Datazone User Profiles API
-  description: >-
-    The Datazone User Profiles API from Amazon DataZone — 2 operation(s) for datazone user profiles.
+  description: The Datazone User Profiles API from Amazon DataZone — 2 operation(s) for datazone user profiles.
   humanURL: https://aws.amazon.com/datazone/
   baseURL: https://datazone.amazonaws.com
   tags:
@@ -579,158 +1118,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-datazone-user-profiles-api-openapi.yml
-common:
-- type: Plans
-  url: plans/amazon-datazone-plans-pricing.yml
-- type: RateLimits
-  url: rate-limits/amazon-datazone-rate-limits.yml
-- type: FinOps
-  url: finops/amazon-datazone-finops.yml
-- type: CapabilityMap
-  url: capabilities/amazon-datazone-capability-edges.yml
-  name: Amazon DataZone Business Capability Map
-- type: Website
-  url: https://aws.amazon.com/datazone/
-- type: AgenticAccess
-  url: agentic-access/amazon-datazone-agentic-access.yml
-- type: TrustCenter
-  url: security/amazon-datazone-trust-center.yml
-- type: VulnerabilityDisclosure
-  url: security/amazon-datazone-vulnerability-disclosure.yml
-- type: DomainSecurity
-  url: security/amazon-datazone-domain-security.yml
-- type: Authentication
-  url: authentication/amazon-datazone-authentication.yml
-- type: PostmanWorkspace
-  url: https://www.postman.com/kinlaneapi/amazon-datazone/overview
-- type: Arazzo
-  url: arazzo/amazon-datazone-audit-domain-subscriptions-workflow.yml
-  name: Amazon DataZone Audit Domain Subscriptions
-- type: Arazzo
-  url: arazzo/amazon-datazone-bootstrap-domain-and-project-workflow.yml
-  name: Amazon DataZone Bootstrap Domain and Project
-- type: Arazzo
-  url: arazzo/amazon-datazone-catalog-asset-workflow.yml
-  name: Amazon DataZone Catalog a Data Asset
-- type: Arazzo
-  url: arazzo/amazon-datazone-discover-and-subscribe-workflow.yml
-  name: Amazon DataZone Discover and Subscribe
-- type: Arazzo
-  url: arazzo/amazon-datazone-onboard-data-workspace-workflow.yml
-  name: Amazon DataZone Onboard Data Workspace
-- type: Arazzo
-  url: arazzo/amazon-datazone-provision-domain-workflow.yml
-  name: Amazon DataZone Provision Domain
-- type: Arazzo
-  url: arazzo/amazon-datazone-provision-environment-workflow.yml
-  name: Amazon DataZone Provision Environment
-- type: Arazzo
-  url: arazzo/amazon-datazone-publish-data-product-workflow.yml
-  name: Amazon DataZone Publish Data Product
-- type: Arazzo
-  url: arazzo/amazon-datazone-rename-project-workflow.yml
-  name: Amazon DataZone Rename Project
-- type: Arazzo
-  url: arazzo/amazon-datazone-request-and-track-subscription-workflow.yml
-  name: Amazon DataZone Request and Track Subscription
-- type: Arazzo
-  url: arazzo/amazon-datazone-teardown-domain-workflow.yml
-  name: Amazon DataZone Teardown Domain
-- type: Arazzo
-  url: arazzo/amazon-datazone-teardown-project-workflow.yml
-  name: Amazon DataZone Teardown Project
-- type: Portal
-  url: https://aws.amazon.com/datazone/
-- type: DeveloperPortal
-  url: https://aws.amazon.com/datazone/
-- type: Documentation
-  url: https://docs.aws.amazon.com/datazone/
-- type: TermsOfService
-  url: https://aws.amazon.com/service-terms/
-- type: PrivacyPolicy
-  url: https://aws.amazon.com/privacy/
-- type: Support
-  url: https://aws.amazon.com/premiumsupport/
-- type: Blog
-  url: https://aws.amazon.com/blogs/big-data/
-- type: GitHubOrganization
-  url: https://github.com/aws
-- type: Console
-  url: https://console.aws.amazon.com/datazone/
-- type: Signup
-  url: https://portal.aws.amazon.com/billing/signup
-- type: Login
-  url: https://signin.aws.amazon.com/
-- type: StatusPage
-  url: https://health.aws.amazon.com/health/status
-- type: Contact
-  url: https://aws.amazon.com/contact-us/
-- type: SpectralRules
-  url: rules/amazon-datazone-spectral-rules.yml
-- type: Vocabulary
-  url: vocabulary/amazon-datazone-vocabulary.yaml
-- type: Features
-  data:
-  - name: Business Data Catalog
-    description: Central catalog where data producers publish assets and data consumers can discover,
-      understand, and request access to data products.
-  - name: Domain-Based Governance
-    description: Organize data assets, users, and governance policies within domains that reflect your
-      organizational structure and data ownership.
-  - name: Subscription Workflow
-    description: Built-in request/approval workflow for data consumers to request access to data assets
-      with business justification and audit trail.
-  - name: Project Workspaces
-    description: Isolated project containers within domains where teams organize their data assets, environments,
-      and members.
-  - name: Analytics Environment Provisioning
-    description: Automatically provision data access environments with Athena, Glue, Redshift, or other
-      tools when subscriptions are approved.
-  - name: Glue Data Catalog Integration
-    description: Automatically discover and import tables from AWS Glue Data Catalog into DataZone for
-      cataloging and governance.
-  - name: Data Lineage
-    description: Track data lineage across assets to understand data origins, transformations, and dependencies
-      for trust and compliance.
-- type: UseCases
-  data:
-  - name: Enterprise Data Marketplace
-    description: Build an internal data marketplace where business units publish their data products for
-      discovery and consumption by other teams.
-  - name: Data Access Governance
-    description: Implement governed data access with approval workflows ensuring data consumers have proper
-      authorization and business justification.
-  - name: Cross-Account Data Sharing
-    description: Share data assets across AWS accounts within an organization using DataZone's subscription
-      and access management capabilities.
-  - name: Self-Service Analytics
-    description: Enable analysts to discover and access data independently through the DataZone catalog
-      with automatic environment provisioning.
-  - name: Regulatory Data Compliance
-    description: Maintain audit trails of data access, govern sensitive data assets, and enforce data
-      residency policies through domain governance.
-- type: Integrations
-  data:
-  - name: AWS Glue
-    description: DataZone integrates with Glue Data Catalog to automatically discover, import, and catalog
-      Glue tables for sharing and governance.
-  - name: Amazon Redshift
-    description: Catalog Redshift tables and views and govern cross-cluster data sharing through DataZone
-      subscription workflows.
-  - name: Amazon Athena
-    description: DataZone environments provision Athena as a query engine for subscribers accessing S3-based
-      data assets.
-  - name: Amazon S3
-    description: Catalog S3-based datasets in DataZone and control access through subscription-based Lake
-      Formation permissions.
-  - name: AWS Lake Formation
-    description: DataZone uses Lake Formation for fine-grained column and row-level access control when
-      subscriptions are approved.
-  - name: AWS IAM
-    description: IAM roles provide domain execution context and identity-based access control for DataZone
-      resources and catalog operations.
-- type: Integrations
-  url: https://aws.amazon.com/marketplace
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-user-profile-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-user-profile-input-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-user-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-create-user-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-update-user-profile-output-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-datazone-get-user-profile-input-schema.json
 integrations:
 - name: Sign in
 - name: Agent Mode
@@ -741,8 +1140,10 @@ integrations:
 - name: Become a Channel Partner
 - name: Sell in AWS Marketplace
 - name: Manage Your Account
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
 x-parent: amazon-web-services
 x-relationship: product
+x-enrichment:
+  date: '2026-11-11'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v6

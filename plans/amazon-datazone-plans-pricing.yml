@@ -2,6 +2,7 @@
 generated: '2026-10-28'
 method: searched
 source: https://aws.amazon.com/datazone/pricing/
+name: Amazon DataZone API Plans
 sources:
 - https://aws.amazon.com/datazone/pricing/
 provenance:
@@ -56,7 +57,7 @@ plans:
   unit: 1,000 output tokens
   included_quota: No free usage
 x-canonical:
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid

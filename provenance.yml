@@ -5,6 +5,9 @@ artifacts:
   agentic-access/amazon-datazone-agentic-access.yml:
     method: generated
     evidence: declared in the artifact
+  ai-preferences/amazon-datazone-ai-preferences.yml:
+    method: harvested
+    evidence: declared in the artifact
   arazzo/amazon-datazone-audit-domain-subscriptions-workflow.yml:
     method: derived
     evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
@@ -47,6 +50,18 @@ artifacts:
   capabilities/amazon-datazone-capability-edges.yml:
     method: unknown
     evidence: no authorship recorded
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
+  changelog/amazon-datazone-changelog.yml:
+    method: searched
+    evidence: declared in the artifact
+  cli/amazon-datazone-cli.yml:
+    method: searched
+    evidence: declared in the artifact
   collections/amazon-datazone-assets-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-datazone-assets-api
@@ -89,6 +104,24 @@ artifacts:
   collections/amazon-datazone.postman_collection.json:
     method: derived
     evidence: openapi/amazon-datazone
+  compliance/amazon-datazone-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
+  conformance/amazon-datazone-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  conventions/amazon-datazone-conventions.yml:
+    method: derived
+    evidence: declared in the artifact
+  data-model/amazon-datazone-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  eligibility/amazon-datazone-eligibility.yml:
+    method: harvested
+    evidence: declared in the artifact
+  errors/amazon-datazone-problem-types.yml:
+    method: searched
+    evidence: declared in the artifact
   examples/asset-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -131,6 +164,9 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/amazon-datazone-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -138,6 +174,582 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-ld/amazon-datazone-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-accept-subscription-request-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-account-pool-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-account-pool-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-asset-filter-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-asset-filter-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-asset-revision-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-asset-revision-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-asset-type-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-asset-type-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-connection-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-connection-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-data-product-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-data-product-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-data-product-revision-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-data-product-revision-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-data-source-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-data-source-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-designation-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-designation-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-domain-unit-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-domain-unit-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-environment-action-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-environment-action-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-environment-blueprint-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-environment-blueprint-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-environment-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-environment-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-form-type-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-form-type-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-glossary-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-glossary-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-glossary-term-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-glossary-term-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-group-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-group-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-notebook-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-notebook-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-project-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-project-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-rule-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-rule-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-subscription-grant-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-subscription-grant-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-subscription-request-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-subscription-request-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-subscription-target-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-subscription-target-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-user-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-create-user-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-asset-type-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-asset-type-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-data-export-configuration-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-data-export-configuration-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-data-product-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-data-product-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-data-source-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-environment-blueprint-configuration-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-form-type-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-form-type-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-glossary-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-glossary-term-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-subscription-grant-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-delete-time-series-data-points-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-account-pool-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-asset-filter-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-asset-type-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-asset-type-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-connection-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-data-export-configuration-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-data-export-configuration-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-data-product-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-data-product-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-data-source-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-designation-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-domain-unit-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-environment-action-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-environment-blueprint-configuration-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-environment-blueprint-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-environment-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-form-type-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-form-type-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-glossary-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-glossary-term-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-group-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-group-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-lineage-event-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-lineage-node-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-lineage-node-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-metadata-generation-run-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-metadata-generation-run-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-notebook-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-notebook-run-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-notebook-run-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-project-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-rule-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-rule-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-subscription-grant-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-subscription-request-details-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-subscription-target-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-time-series-data-point-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-time-series-data-point-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-user-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-get-user-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-account-pools-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-asset-filters-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-asset-filters-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-asset-revisions-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-connections-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-data-product-revisions-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-data-source-runs-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-data-source-runs-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-data-sources-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-designations-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-domain-units-for-parent-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-domain-units-for-parent-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-environment-actions-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-environment-actions-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-environment-blueprint-configurations-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-environment-blueprint-configurations-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-environment-blueprints-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-environment-profiles-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-job-runs-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-job-runs-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-lineage-events-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-lineage-events-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-lineage-node-history-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-metadata-generation-runs-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-metadata-generation-runs-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-notebook-runs-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-notebook-runs-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-notebooks-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-policy-grants-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-project-profiles-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-rules-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-subscription-grants-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-subscription-grants-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-subscription-requests-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-subscription-requests-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-subscription-targets-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-tags-for-resource-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-tags-for-resource-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-time-series-data-points-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-list-time-series-data-points-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-post-lineage-event-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-post-time-series-data-points-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-put-data-export-configuration-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-put-data-export-configuration-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-put-environment-blueprint-configuration-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-put-environment-blueprint-configuration-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-reject-subscription-request-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-start-data-source-run-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-start-data-source-run-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-start-metadata-generation-run-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-start-metadata-generation-run-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-start-notebook-run-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-start-notebook-run-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-tag-resource-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-tag-resource-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-untag-resource-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-untag-resource-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-account-pool-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-account-pool-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-asset-filter-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-connection-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-connection-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-data-source-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-designation-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-designation-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-domain-unit-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-environment-action-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-environment-blueprint-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-environment-blueprint-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-environment-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-environment-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-glossary-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-glossary-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-glossary-term-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-glossary-term-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-group-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-group-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-notebook-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-notebook-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-project-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-project-profile-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-rule-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-rule-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-subscription-grant-status-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-subscription-request-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-subscription-target-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-subscription-target-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-user-profile-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-datazone-update-user-profile-output-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/asset-schema.json:
@@ -215,7 +827,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -284,10 +896,24 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  openapi/_original/amazon-datazone-openapi.yml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/amazon-datazone-lifecycle.yml:
+    method: searched
+    evidence: declared in the artifact
+  llms/amazon-datazone-llms-provenance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/amazon-datazone-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/amazon-datazone-mcp.yml:
+    method: searched
+    evidence: declared in the artifact
+  mcp/amazon-datazone-tool-crosswalk.yml:
+    method: derived
+    evidence: declared in the artifact
   openapi/amazon-datazone-account-pools-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
@@ -298,8 +924,8 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   openapi/amazon-datazone-assets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-datazone-connections-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
@@ -370,8 +996,8 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   openapi/amazon-datazone-projects-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-datazone-revisions-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
@@ -402,6 +1028,12 @@ artifacts:
   openapi/amazon-datazone-user-profiles-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
+  packages/amazon-datazone-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  patterns/amazon-datazone-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/amazon-datazone-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -411,10 +1043,19 @@ artifacts:
   postman/amazon-datazone.postman_collection.json:
     method: derived
     evidence: openapi/amazon-datazone
+  privacy/amazon-datazone-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/amazon-datazone-rate-limits.yml:
     method: generated
     evidence: declared in the artifact
+  regulatory/amazon-datazone-regulatory-posture.yml:
+    method: unknown
+    evidence: no authorship recorded
   rules/amazon-datazone-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/amazon-datazone-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-datazone-spectral-rules.yml:
@@ -429,12 +1070,40 @@ artifacts:
   security/amazon-datazone-vulnerability-disclosure.yml:
     method: searched
     evidence: declared in the artifact
+  skills/_index.yml:
+    method: generated
+    evidence: declared in the artifact
+  skills/amazon-datazone-catalog-and-publish-asset.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/amazon-datazone-discover-and-subscribe.md:
+    method: generated
+    evidence: declared in the artifact
   sla/amazon-datazone-sla.yml:
     method: generated
     evidence: declared in the artifact
   smithy/datazone-2018-05-10.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/datazone/service/2018-05-10/datazone-2018-05-10.json
+      (sha256 7f728a62da50, fetched 2026-11-11T21:08:11+00:00)
+  terms/amazon-datazone-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
+  vendors/amazon-datazone-vendors.yml:
     method: unknown
     evidence: no authorship recorded
   vocabulary/amazon-datazone-vocabulary.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/amazon-datazone-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
+  well-known/amazon-datazone-midway-auth-openid-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-datazone-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-datazone-well-known.yml:
     method: unknown
     evidence: no authorship recorded
